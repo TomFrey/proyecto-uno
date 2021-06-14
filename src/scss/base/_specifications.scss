@@ -1,0 +1,39 @@
+
+/*** media breakpoints ***/
+$breakpoint-large: 740px;
+$breakpoint-medium: 440px;
+$breakpoint-small: 376px;
+
+
+/*** fonts ***/
+$titleFont: "Helvetica", "Arial", "sans-serif";
+$standardTextFont: "Open Sans", "Arial", "sans-serif";
+
+
+/*** colors ***/
+$standardTextColor: #000000;
+
+
+/*** sizes ***/
+$maxWidth: 1200px;
+$standardFontSize: 16px;
+$basicWidth: 8px;
+$basicHeight: 8px;
+$textSize: 1rem;
+$titleSize: 1.75rem;
+$heightHeader: 6*$basicHeight;
+$heightNavigation: 6*$basicHeight;
+
+@mixin standardTextFont(){
+	color: $standardTextColor;
+	font-family: $standardTextFont;
+	font-size: $textSize;
+	font-weight: normal;
+}
+
+@mixin titleTextFont(){
+	color: $standardTextColor;
+	font-family: $titleFont;
+	font-size: $titleSize;
+	font-weight: bold;
+}
