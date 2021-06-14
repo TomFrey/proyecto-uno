@@ -10,10 +10,11 @@ const rename = require('gulp-rename');
 const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const pump = require('pump');
+const cleanCss = require('gulp-clean-css');
 
 
 /* Alle verwendeten JS Files, damit das eine JS File zusammengesetzt werden kann. */
-const allFrontAppJsFiles = [
+const allJsFiles = [
 	'./src/assets/js/app.js',
 	'./src/assets/js/ready.js'
 ];
@@ -69,16 +70,16 @@ const allFrontAppJsFiles = [
 
 
 /**
- * Fügt alle .js Files aus dem Array allFrontAppJsFiles in einem File frontApp.js zusammen.
+ * Fügt alle .js Files aus dem Array allJsFiles in einem File app.js zusammen.
  * Und verkleinert die .js Files.
  * - Babel (ES6 zu ES5) braucht es, weil sonst der minifyer nicht geht, der versteht nur ES5.
  * - pump ist eine Alternative zu pipe, dank pump gibt's schlaue Fehlermeldungen.
  */
- function minifyFrontJs(cb){
+ function minifyJs(cb){
 	pump([
-		gulp.src(allFrontAppJsFiles),
+		gulp.src(allJsFiles),
 		sourcemaps.init(),
-		concat('frontApp.js'),
+		concat('app.js'),
 	 	babel({
 			compact: false, // unterdrückt die Warnung 'The code generator has deoptimised the styling ... as it exceeds the max of'
 			presets: 
@@ -90,7 +91,7 @@ const allFrontAppJsFiles = [
 			]
 		}),
 		uglify(),
-		rename('frontApp.min.js'),
+		rename('app.min.js'),
 		sourcemaps.write('./'),
 		gulp.dest('src/assets/scripts')
 	], cb);
@@ -120,10 +121,88 @@ const allFrontAppJsFiles = [
 	gulp.watch('./src/templates/*.html', gulp.series(injectHeaderAndFooter))
 
 	// Wartet auf Änderungen in einer .js Datei im Frontend Bereich
-	gulp.watch(['./src/assets/js/**/*.js'], gulp.series(minifyFrontJs))
+	gulp.watch(['./src/assets/js/**/*.js'], gulp.series(minifyJs))
 		.on('change', browserSync.reload);
 
 	done();
+}
+
+
+/**
+ * Löscht das dist Verzeichnis
+ */
+ function deleteDistFolder(){
+	return gulp.src('dist', { read: false, allowEmpty: true })
+		.pipe(clean());
+}
+
+/**
+ * Macht fast das Gleiche, wie der Task 'minifyJs',
+ * aber hier wird für den produktiven Code kein Sourcemaps hinzugfügt.
+ *
+ * Fügt alle .js Files aus dem Array allJsFiles in einem File app.js zusammen.
+ * Babel (ES6 zu ES5) braucht es, weil sonst der minifyer nicht geht, der versteht nur ES5.
+ */
+ function minifyJsForDist(cb){
+	pump([
+		gulp.src(allJsFiles),
+		concat('app.js'),
+		babel({
+			compact: false, // unterdrückt die Warnung 'The code generator has deoptimised the styling ... as it exceeds the max of'
+			presets: ['@babel/env']
+		}),
+		uglify(),
+		rename('app.min.js'),
+		gulp.dest('src/assets/scripts')
+	], cb);
+}
+
+/**
+ * Minimiert die css Datei und schreibt sie in den 'dist' Ordner.
+ */
+ function minifyCss(){
+	return gulp.src('./src/assets/css/*.css')
+		.pipe(cleanCss())
+		.pipe(gulp.dest('dist/assets/css'));
+}
+
+/**
+ * Kopiert alle html Dateien in den dist Ordner, ausser den
+ * html Dateien, die im templates Order liegen.
+ */
+ function copyHTML(){
+	return gulp.src(['./src/**/**/*.html', '!./src/templates/**/*.html'])
+		.pipe(gulp.dest('dist'));
+}
+
+/**
+ * Kopiert die scripts/app.min.js Datei in den dist Ordner
+ */
+ function copyJs(){
+	return gulp.src(['./src/assets/scripts/app.min.js'])
+		.pipe(gulp.dest('dist/assets/scripts'));
+}
+
+/**
+ * Kopiert die robotsForTestEnviroment.txt Datei ins dist Verzeichnis
+ * und benennt sie robots.txt um.
+ */
+ function copyRobotsForTestEnviroment(){
+	return gulp.src(['./src/assets/webServerConfig/robotsForTestEnviroment.txt'])
+		.pipe(rename('robots.txt'))
+		.pipe(gulp.dest('dist'));
+}
+
+/**
+ * Kopiert alle Bilder und Icons in den dist Ordner
+ */
+ function copyImages(){
+	return gulp.src([
+		'./src/assets/images/**/*.png',
+		'./src/assets/images/**/*.svg',
+		'./src/assets/images/**/*.gif',
+		'./src/assets/images/**/*.jpg'
+	]).pipe(gulp.dest('dist/assets/images'));
 }
 
 
@@ -132,6 +211,27 @@ const allFrontAppJsFiles = [
  * Fall unter anderm den 'run' Task startet.
  */
 exports.default = gulp.series(gulp.parallel(compileScss,
-											minifyFrontJs,
+											minifyJs,
 											injectHeaderAndFooter),
 								run);
+
+
+// Mit 'gulp build' wird das Projekte zusammengebaut und in den 'dist' Ordner gestellt.
+function build(enviroment) {
+	let building = gulp.series(deleteDistFolder,
+								gulp.parallel(	minifyJsForDist,
+												compileScss),
+								gulp.parallel(minifyCss),
+								gulp.parallel(	copyHTML,
+												copyJs,
+												copyImages)
+							  );
+
+	//Überschreibt robots.txt mit src/assets/webServerConfig/robotsForTestEnviroment.txt
+	if (enviroment === 'toTestEnviroment') {
+		building = gulp.series(building, copyRobotsForTestEnviroment);
+	}
+	return building;
+};
+
+exports.build = build();

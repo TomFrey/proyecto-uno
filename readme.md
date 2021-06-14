@@ -1,16 +1,7 @@
-A project starter kit
+Proyecto-uno
 
-**Beinhaltet**: 
+## gulp
+Startet die Listener
 
-gulp, sass,
-js File to start with modules
-
-
-**Folgende Kommandos Ausführen**:
-
-rm -rf node_modules
-
-npm install     -> installiert alle Projekt Abhängigkeiten
-
-npm start       -> setzt einen Watcher auf die scss Files
-
+## gulp build
+Minimiert die css und js Files und kopiert alles in einen dist Ordner
