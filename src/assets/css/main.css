@@ -71,6 +71,35 @@ nav {
     nav li a:hover {
       color: #bfbfbf; } }
 
+.portfolio-wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  align-content: space-around; }
+  .portfolio-wrapper .portfolio-item {
+    flex: 1 1 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-align: center; }
+    .portfolio-wrapper .portfolio-item a img {
+      width: 90%; }
+
+/* ************************************************************* */
+/* *********** ab hier für mobile querformat ******************* */
+@media screen and (min-width: 440px) {
+  .portfolio-wrapper .portfolio-item {
+    flex: 1 1 50%; } }
+
+/* *************************************************** */
+/* *********** ab hier für desktop ******************* */
+@media screen and (min-width: 740px) {
+  .portfolio-wrapper .portfolio-item {
+    flex: 1 1 33%;
+    margin-top: 16px;
+    margin-bottom: 16px; }
+    .portfolio-wrapper .portfolio-item a img {
+      width: 90%; } }
+
 /* Border Box Trick */
 /* padding ist in der Box Breite miteingerechnet*/
 html {

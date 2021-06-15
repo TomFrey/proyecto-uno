@@ -1,0 +1,46 @@
+.portfolio-wrapper{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    align-content: space-around;
+
+    .portfolio-item{
+        flex: 1 1 100%;
+        margin-top: $basicHeight;
+        margin-bottom: $basicWidth;
+        text-align: center;
+
+        a img{
+            width: 90%;
+        }
+    }
+}
+
+
+/* ************************************************************* */
+/* *********** ab hier für mobile querformat ******************* */
+@media screen and (min-width: $breakpoint-medium) {    // wenn Bildschirm grösser als, dann...
+    .portfolio-wrapper{
+        .portfolio-item{
+            flex: 1 1 50%;
+        }
+    }
+}
+
+
+
+/* *************************************************** */
+/* *********** ab hier für desktop ******************* */
+@media screen and (min-width: $breakpoint-large) {    // wenn Bildschirm grösser als, dann...
+    .portfolio-wrapper{
+        .portfolio-item{
+            flex: 1 1 33%;
+            margin-top: 2*$basicHeight;
+            margin-bottom: 2*$basicWidth;
+
+            a img{
+               width: 90%;
+            }
+        }
+    }
+}
