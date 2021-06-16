@@ -1,17 +1,16 @@
 /**
  * Base
  */
-
 @import "base/reset";
 @import "base/specifications";
+@import "base/grids";
 
 /**
  * Components
  */
-
-@import "components/sample";
 @import "components/navigation";
 @import "components/portfolio";
+@import "components/contact";
 
 
 
@@ -45,27 +44,38 @@ body{
         [row3] "Main"     auto [row3-end]
         [row4] "Footer"   50px [row4-end]
                     / 100%;
-  background-color: rgb(255,255,150);
+  background-color: $standardBackgroundColor;
+  margin-top: $basicHeight;
 
   header{
+    grid-area: 1 / 1 / 2 / 2;
+    background-color: $titleBackgroundColor;
+
     .title{
       @include titleTextFont();
       height: $heightHeader;
       line-height: $heightHeader;
       text-align: center;
     }
-    grid-area: 1 / 1 / 2 / 2;
-    background-color: rgb(200,200,200);
   }
 
   main{
     grid-area: 3 / 1 / 4 / 2;
-    background-color: rgb(200,300,200);
+    
+    .page-title{
+      @include pageTitleTextFont();
+      margin: 0 $basicWidth;
+    }
+
+    .page-text{
+      @include standardTextFont();
+      margin: 0 $basicWidth;
+    }
   }
 
   footer{
     grid-area: 4 / 1 / 5 / 2;
-    background-color: rgb(200,200,200);
+    background-color: $titleBackgroundColor;
   }
 
   .side-space--left, .side-space--right{
@@ -94,7 +104,8 @@ body{
                   [row3] "SideSpace-Left Main SideSpace-Right"     auto
                   [row4] "SideSpace-Left Footer SideSpace-Right"   50px
                       / auto 1200px auto;
-    background-color: rgb(255,255,150);
+                      
+    margin-top: 2*$basicHeight;
 
     header{
       grid-area: 1 / 2 / 2 / 3;
@@ -110,6 +121,10 @@ body{
 
     main{
       grid-area: 3 / 2 / 4 / 3;
+
+      .page-title, .page-text{
+        margin: 0 2*$basicWidth;
+      }
     }
 
     footer{

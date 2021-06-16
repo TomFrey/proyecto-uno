@@ -43,12 +43,46 @@ table {
 /*** fonts ***/
 /*** colors ***/
 /*** sizes ***/
+.gridx12 {
+  display: grid;
+  grid: [Zeile1] "row1 row1 row1 row1 row1 row1 row1 row1 row1 row1 row1 row1" auto [Zeile1Ende]/1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-row-gap: 16px;
+  grid-column-gap: 16px;
+  margin: 8px 8px; }
+
+.gridx12__twoCol--col1of2 {
+  grid-area: 1 / 1 / 2 / 13; }
+
+.gridx12__twoCol--col2of2 {
+  grid-area: 2 / 1 / 3 / 13; }
+
+.gridx12__oneCol--col1of1 {
+  grid-area: 1 / 1 / 2 / 13; }
+
+/* ************************************************************* */
+/* *********** ab hier für mobile querformat ******************* */
+@media screen and (min-width: 440px) {
+  .gridx12__twoCol--col1of2 {
+    grid-area: 1 / 1 / 2 / 7; }
+  .gridx12__twoCol--col2of2 {
+    grid-area: 1 / 7 / 2 / 13; } }
+
+/* *************************************************** */
+/* *********** ab hier für desktop ******************* */
+@media screen and (min-width: 740px) {
+  .gridx12 {
+    margin: 16px 16px; }
+  .gridx12__twoCol--col1of2 {
+    grid-area: 1 / 1 / 2 / 10; }
+  .gridx12__twoCol--col2of2 {
+    grid-area: 1 / 10 / 2 / 13; } }
+
 /**
  * Components
  */
 nav {
   grid-area: 2 / 1 / 3 / 2;
-  background-color: #ffff96; }
+  background-color: #FFFFFF; }
   nav ul {
     display: flex;
     justify-content: center;
@@ -96,9 +130,21 @@ nav {
   .portfolio-wrapper .portfolio-item {
     flex: 1 1 33%;
     margin-top: 16px;
-    margin-bottom: 16px; }
-    .portfolio-wrapper .portfolio-item a img {
-      width: 90%; } }
+    margin-bottom: 16px; } }
+
+.contact__picture .contact__picture__img {
+  width: 100%; }
+
+.address ul {
+  margin: 16px 8px; }
+
+/* ************************************************************* */
+/* *********** ab hier für mobile querformat ******************* */
+/* *************************************************** */
+/* *********** ab hier für desktop ******************* */
+@media screen and (min-width: 740px) {
+  .address ul {
+    margin: 16px 16px; } }
 
 /* Border Box Trick */
 /* padding ist in der Box Breite miteingerechnet*/
@@ -122,24 +168,36 @@ body {
 .wrapper {
   display: grid;
   grid: [row1] "Header" 48px [row1-end] [row2] "Nav" 48px [row2-end] [row3] "Main" auto [row3-end] [row4] "Footer" 50px [row4-end]/100%;
-  background-color: #ffff96; }
+  background-color: #FFFFFF;
+  margin-top: 8px; }
   .wrapper header {
     grid-area: 1 / 1 / 2 / 2;
-    background-color: #c8c8c8; }
+    background-color: #FFFFFF; }
     .wrapper header .title {
       color: #000000;
       font-family: "Helvetica", "Arial", "sans-serif";
-      font-size: 1.75rem;
+      font-size: 2.25rem;
       font-weight: bold;
       height: 48px;
       line-height: 48px;
       text-align: center; }
   .wrapper main {
-    grid-area: 3 / 1 / 4 / 2;
-    background-color: #c8ffc8; }
+    grid-area: 3 / 1 / 4 / 2; }
+    .wrapper main .page-title {
+      color: #000000;
+      font-family: "Open Sans", "Arial", "sans-serif";
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0 8px; }
+    .wrapper main .page-text {
+      color: #000000;
+      font-family: "Open Sans", "Arial", "sans-serif";
+      font-size: 1rem;
+      font-weight: normal;
+      margin: 0 8px; }
   .wrapper footer {
     grid-area: 4 / 1 / 5 / 2;
-    background-color: #c8c8c8; }
+    background-color: #FFFFFF; }
   .wrapper .side-space--left, .wrapper .side-space--right {
     display: none; }
 
@@ -151,7 +209,7 @@ body {
   .wrapper {
     display: grid;
     grid-template: [row1] "SideSpace-Left Header SideSpace-Right" 50px [row2] "SideSpace-Left Nav SideSpace-Right" 50px [row3] "SideSpace-Left Main SideSpace-Right" auto [row4] "SideSpace-Left Footer SideSpace-Right" 50px/auto 1200px auto;
-    background-color: #ffff96; }
+    margin-top: 16px; }
     .wrapper header {
       grid-area: 1 / 2 / 2 / 3; }
     .wrapper .side-space--left {
@@ -160,5 +218,7 @@ body {
       grid-area: 1 / 3 / 5 / 4; }
     .wrapper main {
       grid-area: 3 / 2 / 4 / 3; }
+      .wrapper main .page-title, .wrapper main .page-text {
+        margin: 0 16px; }
     .wrapper footer {
       grid-area: 4 / 2 / 5 / 3; } }

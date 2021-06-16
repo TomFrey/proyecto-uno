@@ -12,6 +12,9 @@ $standardTextFont: "Open Sans", "Arial", "sans-serif";
 
 /*** colors ***/
 $standardTextColor: #000000;
+$standardBackgroundColor: #FFFFFF;
+$titleBackgroundColor: $standardBackgroundColor;
+$navBackgroundColor: $standardBackgroundColor;
 
 
 /*** sizes ***/
@@ -20,7 +23,8 @@ $standardFontSize: 16px;
 $basicWidth: 8px;
 $basicHeight: 8px;
 $textSize: 1rem;
-$titleSize: 1.75rem;
+$sideTitleSize: 1.5rem;
+$titleSize: 2.25rem;
 $heightHeader: 6*$basicHeight;
 $heightNavigation: 6*$basicHeight;
 
@@ -29,6 +33,13 @@ $heightNavigation: 6*$basicHeight;
 	font-family: $standardTextFont;
 	font-size: $textSize;
 	font-weight: normal;
+}
+
+@mixin pageTitleTextFont(){
+	color: $standardTextColor;
+	font-family: $standardTextFont;
+	font-size: $sideTitleSize;
+	font-weight: bold;
 }
 
 @mixin titleTextFont(){
