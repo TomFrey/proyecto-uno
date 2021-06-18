@@ -9,12 +9,12 @@
     margin: $basicHeight $basicWidth;
 }
 
-.gridx12__twoCol--col1of2{
+.gridx12__threeToOne--col1of2, .gridx12__oneToOne--col1of2{
     //background-color: green;
     grid-area: 1 / 1 / 2 / 13;
 }
 
-.gridx12__twoCol--col2of2{
+.gridx12__threeToOne--col2of2, .gridx12__oneToOne--col2of2{
     //background-color: yellow;
     grid-area: 2 / 1 / 3 / 13;
 }
@@ -27,12 +27,12 @@
 /* ************************************************************* */
 /* *********** ab hier für mobile querformat ******************* */
 @media screen and (min-width: $breakpoint-medium) {    // wenn Bildschirm grösser als, dann...
-    .gridx12__twoCol--col1of2{
+    .gridx12__threeToOne--col1of2, .gridx12__oneToOne--col1of2{
         //background-color: green;
         grid-area: 1 / 1 / 2 / 7;
     }
     
-    .gridx12__twoCol--col2of2{
+    .gridx12__threeToOne--col2of2, .gridx12__oneToOne--col2of2{
         //background-color: yellow;
         grid-area: 1 / 7 / 2 / 13;
     }
@@ -48,13 +48,21 @@
         margin: 2*$basicHeight 2*$basicWidth;
     }
 
-    .gridx12__twoCol--col1of2{
+    .gridx12__threeToOne--col1of2{
 		//background-color: green;
 		grid-area: 1 / 1 / 2 / 10;
 	}
 
-	.gridx12__twoCol--col2of2{
+	.gridx12__threeToOne--col2of2{
 		//background-color: yellow;
 		grid-area: 1 / 10 / 2 / 13;
+	}
+
+    .gridx12__oneToOne--col1of2{
+		grid-area: 1 / 1 / 2 / 7;
+	}
+
+	.gridx12__oneToOne--col2of2{
+		grid-area: 1 / 7 / 2 / 13;
 	}
 }
