@@ -1,0 +1,54 @@
+.imageWithCaption {
+    margin-bottom: $basicHeight;
+}
+
+.imageWithCaption a{
+    @include imageCaptionTextFont();
+    text-decoration: none;
+}
+
+
+.imageWithCaption__img{
+    width: 100%;
+}
+
+.imageWithCaption__caption{
+    margin-bottom: $basicHeight;
+}
+
+
+/* ************************************************************* */
+/* *********** ab hier für mobile querformat ******************* */
+@media screen and (min-width: $breakpoint-medium) {    // wenn Bildschirm grösser als, dann...
+   
+}
+
+
+
+/* *************************************************** */
+/* *********** ab hier für desktop ******************* */
+@media screen and (min-width: $breakpoint-large) {    // wenn Bildschirm grösser als, dann...
+   
+    .imageWithCaption {
+        margin-bottom: $basicHeight;
+    }
+
+    .imageWithCaption__img{
+        position: relative;
+        z-index: 1;
+    }
+    
+    .imageWithCaption__caption {
+        position: relative;
+        bottom: 50px;
+        z-index: 0;
+    }
+    
+    .imageWithCaption a:hover {
+       
+        .imageWithCaption__caption {
+            bottom: 0px;
+            transition: bottom 0.5s ease-in-out 1ms;
+        }
+    }
+}
