@@ -98,6 +98,8 @@ nav {
       nav ul li a {
         color: #000000;
         text-decoration: none; }
+      nav ul li a.js-isSelected {
+        color: #bfbfbf; }
 
 /* ************************************************************* */
 /* *********** ab hier für mobile querformat ******************* */

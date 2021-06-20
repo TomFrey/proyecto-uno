@@ -17,6 +17,10 @@ nav{
         color: $standardTextColor;
         text-decoration: none;
       }
+
+      a.js-isSelected{
+        color: lighten($standardTextColor, 75%);
+      }
     }
 
   }

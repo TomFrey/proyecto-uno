@@ -1,6 +1,6 @@
 "use strict";
 
-function ready(cb) {
+function domIsReady(cb) {
   //Wenn der DOM geladen ist, dann die übergebene Funktion cb aufrufen
   if (document.readyState === "complete" || (document.readyState !== "loading" && !document.documentElement.doScroll)) {
     console.log('DOM is ready');

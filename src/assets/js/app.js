@@ -1,14 +1,15 @@
 "use strict";
 
-var App = (function(ModuleOne){
+const App = (function (Navigation) {
 
   /**** wird vor dem DOM ready ausgeführt ****/
 
   /**** wird nach dem DOM ready ausgeführt ****/
   function init(){
     console.log('init() of App called');
+    Navigation.init();
 
-    ModuleOne.init();
+
   };
 
   //public api
@@ -16,7 +17,7 @@ var App = (function(ModuleOne){
     init: init
   }
 
-})(ModuleOne);
+})(Navigation);
 
 //wenn der DOM vollständig geladen ist init aufrufen
-ready(App.init);
+domIsReady(App.init);
