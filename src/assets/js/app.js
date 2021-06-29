@@ -1,6 +1,6 @@
 "use strict";
 
-const App = (function (Navigation) {
+const App = (function (Navigation, ImageSlider) {
 
   /**** wird vor dem DOM ready ausgeführt ****/
 
@@ -8,6 +8,7 @@ const App = (function (Navigation) {
   function init(){
     console.log('init() of App called');
     Navigation.init();
+    ImageSlider.init();
 
 
   };
@@ -17,7 +18,7 @@ const App = (function (Navigation) {
     init: init
   }
 
-})(Navigation);
+})(Navigation, ImageSlider);
 
 //wenn der DOM vollständig geladen ist init aufrufen
 domIsReady(App.init);

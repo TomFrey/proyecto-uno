@@ -3,14 +3,25 @@
 const ImageSlider = (function(){
     console.log('inside ImageSlider IIFE');
 
-    var test;
+    let arnelasPictures;
+
+
+    function toggleImageSlider(event) {
+		
+	}
 
     function init(){
         console.log('init() of ImageSlider called');
-        test = 'defaultValue';
-
-        //hier kommt die Funktionalität von ModuleOne...
-        return test;
+    
+        arnelasPictures = document.querySelectorAll('.imageWithCaption__openImageSlider');
+		if (arnelasPictures !== null) {
+			arnelasPictures.forEach((arnelasPicture) => {
+				arnelasPicture.addEventListener('click', (event) => {
+					toggleImageSlider(event.target);
+                    console.log('Image angeklickt...');
+				});
+			});
+		}
     }
 
     //public api

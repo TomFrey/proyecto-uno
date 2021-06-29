@@ -15,6 +15,9 @@ const cleanCss = require('gulp-clean-css');
 
 /* Alle verwendeten JS Files, damit das eine JS File zusammengesetzt werden kann. */
 const allJsFiles = [
+	'./node_modules/jquery/dist/jquery.js',
+	'./node_modules/slick-carousel/slick/slick.js',
+
 	'./src/assets/js/modules/globals.js',
 	'./src/assets/js/modules/navigation.js',
 	'./src/assets/js/modules/imageSlider.js',
