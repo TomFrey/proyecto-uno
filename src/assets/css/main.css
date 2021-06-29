@@ -234,7 +234,7 @@ body {
 
 .wrapper {
   display: grid;
-  grid: [row1] "Header" 48px [row1-end] [row2] "Nav" 48px [row2-end] [row3] "Main" auto [row3-end] [row4] "Footer" 50px [row4-end]/100%;
+  grid: [row1] "Header" 192px [row1-end] [row2] "Nav" 48px [row2-end] [row3] "Main" auto [row3-end] [row4] "Footer" 50px [row4-end]/100%;
   background-color: #FFFFFF;
   margin-top: 8px; }
   .wrapper header {
@@ -245,6 +245,34 @@ body {
       font-family: "Helvetica", "Arial", "sans-serif";
       font-size: 2.25rem;
       font-weight: bold;
+      font-family: "Montserrat", sans-serif;
+      height: 48px;
+      line-height: 48px;
+      text-align: center; }
+    .wrapper header .title1 {
+      color: #000000;
+      font-family: "Helvetica", "Arial", "sans-serif";
+      font-size: 2.25rem;
+      font-weight: bold;
+      font-family: "Quicksand", sans-serif;
+      height: 48px;
+      line-height: 48px;
+      text-align: center; }
+    .wrapper header .title2 {
+      color: #000000;
+      font-family: "Helvetica", "Arial", "sans-serif";
+      font-size: 2.25rem;
+      font-weight: bold;
+      font-family: "Alegreya Sans SC", sans-serif;
+      height: 48px;
+      line-height: 48px;
+      text-align: center; }
+    .wrapper header .title3 {
+      color: #000000;
+      font-family: "Helvetica", "Arial", "sans-serif";
+      font-size: 2.25rem;
+      font-weight: bold;
+      font-family: "Alegreya Sans", sans-serif;
       height: 48px;
       line-height: 48px;
       text-align: center; }
@@ -275,7 +303,7 @@ body {
 @media screen and (min-width: 1050px) {
   .wrapper {
     display: grid;
-    grid-template: [row1] "SideSpace-Left Header SideSpace-Right" 50px [row2] "SideSpace-Left Nav SideSpace-Right" 50px [row3] "SideSpace-Left Main SideSpace-Right" auto [row4] "SideSpace-Left Footer SideSpace-Right" 50px/auto 1200px auto;
+    grid-template: [row1] "SideSpace-Left Header SideSpace-Right" 200px [row2] "SideSpace-Left Nav SideSpace-Right" 50px [row3] "SideSpace-Left Main SideSpace-Right" auto [row4] "SideSpace-Left Footer SideSpace-Right" 50px/auto 1200px auto;
     margin-top: 16px; }
     .wrapper header {
       grid-area: 1 / 2 / 2 / 3; }
