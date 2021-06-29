@@ -35,6 +35,13 @@ $heightNavigation: 6*$basicHeight;
 	font-weight: normal;
 }
 
+@mixin cvTitleTextFont(){
+	color: $standardTextColor;
+	font-family: $standardTextFont;
+	font-size: $textSize;
+	font-weight: bold;
+}
+
 @mixin imageCaptionTextFont(){
 	color: lighten($standardTextColor, 50%);
 	font-family: $standardTextFont;
