@@ -69,7 +69,7 @@ table {
 
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 1050px) {
   .gridx12 {
     margin: 16px 16px; }
   .gridx12__threeToOne--col1of2 {
@@ -105,7 +105,7 @@ nav {
 /* *********** ab hier für mobile querformat ******************* */
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 1050px) {
   nav {
     grid-area: 2 / 2 / 3 / 3; }
     nav li a:hover {
@@ -132,7 +132,7 @@ nav {
 
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 1050px) {
   .portfolio-wrapper .portfolio-item {
     flex: 1 1 33%;
     margin-top: 16px;
@@ -148,7 +148,7 @@ nav {
 /* *********** ab hier für mobile querformat ******************* */
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 1050px) {
   .address ul {
     margin: 16px 16px; } }
 
@@ -199,7 +199,7 @@ nav {
 /* *********** ab hier für mobile querformat ******************* */
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 1050px) {
   .imageWithCaption {
     margin-bottom: 8px; }
   .imageWithCaption__img {
@@ -272,7 +272,7 @@ body {
 /* *********** ab hier für mobile querformat ******************* */
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
-@media screen and (min-width: 740px) {
+@media screen and (min-width: 1050px) {
   .wrapper {
     display: grid;
     grid-template: [row1] "SideSpace-Left Header SideSpace-Right" 50px [row2] "SideSpace-Left Nav SideSpace-Right" 50px [row3] "SideSpace-Left Main SideSpace-Right" auto [row4] "SideSpace-Left Footer SideSpace-Right" 50px/auto 1200px auto;
