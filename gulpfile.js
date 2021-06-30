@@ -11,6 +11,10 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const pump = require('pump');
 const cleanCss = require('gulp-clean-css');
+const gUtil = require('gulp-util');
+const ftp = require('vinyl-ftp');
+
+const configFile = require('./config.js');
 
 
 /* Alle verwendeten JS Files, damit das eine JS File zusammengesetzt werden kann. */
@@ -213,6 +217,27 @@ const allJsFiles = [
 }
 
 
+const getFtpTestConnection = () => {
+	return ftp.create({
+		host: 'arnelas.mitlinxlernen.ch',
+		port: 21,
+		user: configFile.config.testFtp.user,
+		password: configFile.config.testFtp.pass,
+		parallel: 5,
+		log: gUtil.log
+	})
+}
+
+function remoteDeploy(getFtpConnection, ftpDestination){
+	const connection = getFtpConnection();
+	const localFilesToCopy = ['./dist/**/*', '!./dist/assets/images/*.jpg'];
+
+	return gulp.src(localFilesToCopy, {buffer: false})
+		//.pipe(connection.newer(ftpDestination)) //nur neue Files hochladen
+		.pipe(connection.dest(ftpDestination))
+}
+
+
 /**
  * Mit 'gulp' wird der Default Task gestartet, der in diesem
  * Fall unter anderm den 'run' Task startet.
@@ -242,3 +267,7 @@ function build(enviroment) {
 };
 
 exports.build = build();
+
+// Mit 'gulp deployToTest' wird das Projekt auf den arnelas.mitlinxlernen.ch FTP Server gestellt
+// Die Bilder werden jeweils nicht hochgeladen
+exports.deployToTest = gulp.series(build('toTestEnviroment'), remoteDeploy.bind(this, getFtpTestConnection, '/'));

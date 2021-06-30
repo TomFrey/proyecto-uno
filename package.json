@@ -19,7 +19,9 @@
     "gulp-sass": "^4.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
-    "pump": "^3.0.0"
+    "gulp-util": "^3.0.8",
+    "pump": "^3.0.0",
+    "vinyl-ftp": "^0.6.1"
   },
   "dependencies": {
     "jquery": "^3.6.0",
