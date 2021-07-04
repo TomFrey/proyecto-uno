@@ -303,7 +303,7 @@ body {
 @media screen and (min-width: 1050px) {
   .wrapper {
     display: grid;
-    grid-template: [row1] "SideSpace-Left Header SideSpace-Right" 200px [row2] "SideSpace-Left Nav SideSpace-Right" 50px [row3] "SideSpace-Left Main SideSpace-Right" auto [row4] "SideSpace-Left Footer SideSpace-Right" 50px/auto 1200px auto;
+    grid-template: [row1] "SideSpace-Left Header SideSpace-Right" 200px [row2] "SideSpace-Left Nav SideSpace-Right" 50px [row3] "SideSpace-Left Main SideSpace-Right" auto [row4] "SideSpace-Left Footer SideSpace-Right" 50px/auto 1600px auto;
     margin-top: 16px; }
     .wrapper header {
       grid-area: 1 / 2 / 2 / 3; }

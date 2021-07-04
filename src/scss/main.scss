@@ -130,7 +130,7 @@ body{
                   [row2] "SideSpace-Left Nav SideSpace-Right"      50px
                   [row3] "SideSpace-Left Main SideSpace-Right"     auto
                   [row4] "SideSpace-Left Footer SideSpace-Right"   50px
-                      / auto 1200px auto;
+                      / auto $maxWidth auto;
                       
     margin-top: 2*$basicHeight;
 
