@@ -41,7 +41,7 @@ body{
 
 .wrapper{
   display: grid;
-  grid: [row1] "Header"   4*$heightHeader [row1-end]
+  grid: [row1] "Header"   $heightHeader [row1-end]
         [row2] "Nav"      $heightNavigation [row2-end]
         [row3] "Main"     auto [row3-end]
         [row4] "Footer"   50px [row4-end]
@@ -55,35 +55,15 @@ body{
 
     .title{
       @include titleTextFont();
-      font-family: $titleFontMontserrat;
       height: $heightHeader;
       line-height: $heightHeader;
       text-align: center;
     }
+  }
 
-    .title1{
-      @include titleTextFont();
-      font-family: $titleFontQuicksand;
-      height: $heightHeader;
-      line-height: $heightHeader;
-      text-align: center;
-    }
-
-    .title2{
-      @include titleTextFont();
-      font-family: $titleFontAlegreyaSansSc;
-      height: $heightHeader;
-      line-height: $heightHeader;
-      text-align: center;
-    }
-
-    .title3{
-      @include titleTextFont();
-      font-family: $titleFontAlegreyaSans;
-      height: $heightHeader;
-      line-height: $heightHeader;
-      text-align: center;
-    }
+  nav{
+    grid-area: 2 / 1 / 3 / 2;
+    @include navigationTextFont();
   }
 
   main{
@@ -126,8 +106,8 @@ body{
 
   .wrapper{
     display: grid;
-    grid-template: [row1] "SideSpace-Left Header SideSpace-Right"  200px
-                  [row2] "SideSpace-Left Nav SideSpace-Right"      50px
+    grid-template: [row1] "SideSpace-Left Header SideSpace-Right"  1.5*$heightHeader
+                  [row2] "SideSpace-Left Nav SideSpace-Right"      1.5*$heightNavigation
                   [row3] "SideSpace-Left Main SideSpace-Right"     auto
                   [row4] "SideSpace-Left Footer SideSpace-Right"   50px
                       / auto $maxWidth auto;
@@ -136,6 +116,15 @@ body{
 
     header{
       grid-area: 1 / 2 / 2 / 3;
+
+      .title{
+        font-size: 4.5rem;
+      }
+    }
+
+    nav{
+      grid-area: 2 / 2 / 3 / 3;
+      font-size: 2rem;
     }
 
     .side-space--left{

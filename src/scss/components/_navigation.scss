@@ -19,7 +19,7 @@ nav{
       }
 
       a.js-isSelected{
-        color: lighten($standardTextColor, 75%);
+        @include navigationSelectedTextFont();
       }
     }
 
