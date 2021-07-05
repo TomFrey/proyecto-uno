@@ -230,7 +230,7 @@ const getFtpTestConnection = () => {
 
 function remoteDeploy(getFtpConnection, ftpDestination){
 	const connection = getFtpConnection();
-	const localFilesToCopy = ['./dist/**/*', '!./dist/assets/images/*.jpg'];
+	const localFilesToCopy = ['./dist/**/*', '!./dist/assets/images/pics/**/*.jpg'];
 
 	return gulp.src(localFilesToCopy, {buffer: false})
 		//.pipe(connection.newer(ftpDestination)) //nur neue Files hochladen
