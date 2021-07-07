@@ -13,6 +13,7 @@ const pump = require('pump');
 const cleanCss = require('gulp-clean-css');
 const gUtil = require('gulp-util');
 const ftp = require('vinyl-ftp');
+const replace = require('gulp-replace');
 
 const configFile = require('./config.js');
 
@@ -216,6 +217,24 @@ const allJsFiles = [
 	]).pipe(gulp.dest('dist/assets/images'));
 }
 
+/**
+ * Kopiert alle Dateien aus dem api Ordner in den dist Ordner
+ */
+ function copyApi(){
+	return gulp.src(['./src/api/**/*.*'])
+		.pipe(gulp.dest('dist/api'));
+}
+
+/**
+ * Ersetzt username und passwort der DB
+ */
+ function replaceProductionCredentials(){
+	return gulp.src(['./src/api/database/DB.php'])
+		.pipe(replace('rootuser', configFile.config.production.user))
+		.pipe(replace('rootpw', configFile.config.production.pass))
+		.pipe(gulp.dest('dist/api/database'));
+}
+
 
 const getFtpTestConnection = () => {
 	return ftp.create({
@@ -250,13 +269,15 @@ exports.default = gulp.series(gulp.parallel(compileScss,
 
 // Mit 'gulp build' wird das Projekte zusammengebaut und in den 'dist' Ordner gestellt.
 function build(enviroment) {
-	let building = gulp.series(deleteDistFolder,
+	let building = gulp.series(	deleteDistFolder,
 								gulp.parallel(	minifyJsForDist,
 												compileScss),
 								gulp.parallel(minifyCss),
-								gulp.parallel(	copyHTML,
+								gulp.parallel(	copyApi,
+												copyHTML,
 												copyJs,
-												copyImages)
+												copyImages),
+								replaceProductionCredentials			
 							  );
 
 	//Überschreibt robots.txt mit src/assets/webServerConfig/robotsForTestEnviroment.txt

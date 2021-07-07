@@ -4,8 +4,8 @@ class DB
 {
 	private static $SERVERNAME = "localhost";
 	private static $DB_NAME = "arnelas";
-	private static $USERNAME = "root";
-	private static $PASSWORD = "root";
+	private static $USERNAME = "rootuser";
+	private static $PASSWORD = "rootpw";
 
 	private static $CONN;
 
