@@ -9,8 +9,11 @@
         flex: 1 1 100%;
         margin-top: $basicHeight;
         margin-bottom: $basicWidth;
-        //margin: $basicHeight $basicWidth;
         text-align: center;
+
+        a {
+            pointer-events: none;
+        }
 
         a img{
             width: 100%;
@@ -25,6 +28,10 @@
     .portfolio-wrapper{
         .portfolio-item{
             flex: 1 1 50%;
+
+            a {
+                pointer-events: unset;
+            }
 
             a img{
                 width: 90%;

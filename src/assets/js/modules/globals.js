@@ -2,6 +2,8 @@
 const Globals = (function () {
 	function get() {
 		return {
+			breakpointLarge: 1050,
+			breakpointMedium: 440,
 			nameOfCurrentSite: location.pathname.split('/')[1].split('.')[0]
 		};
 	}

@@ -2,7 +2,7 @@
 /*** media breakpoints ***/
 $breakpoint-large: 1050px;
 $breakpoint-medium: 440px;
-$breakpoint-small: 376px;
+//$breakpoint-small: 376px;
 
 
 /*** fonts ***/
@@ -22,6 +22,7 @@ $navBackgroundColor: $standardBackgroundColor;
 
 /*** sizes ***/
 $maxWidth: 1600px;
+$imageSliderWidth: 1600px;
 $standardFontSize: 16px;
 $basicWidth: 8px;
 $basicHeight: 8px;
