@@ -26,6 +26,7 @@ const ImageSlider = (function(Globals){
         $('.pics-carousel').slick({
             slidesToShow: 1,
             adaptiveHeight: true,
+            //variableWidth: true,
             initialSlide: parseInt(picNumber, 10)-1,
             responsive: [
                 {
