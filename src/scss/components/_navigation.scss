@@ -11,7 +11,7 @@ nav{
 
     li{
       list-style: none;
-      padding: 5px;
+      padding: 0.5*$basicHeight 0.5*$basicWidth;
 
       a{
         color: $standardTextColor;
@@ -43,12 +43,18 @@ nav{
   nav{
     grid-area: 2 / 2 / 3 / 3;
   
-    li{
-      a:hover{
-        color: lighten($standardTextColor, 75%);
+    ul{
+      li{
+        padding: $basicHeight $basicWidth;
+  
+        a:hover{
+          color: lighten($standardTextColor, 75%);
+        }
       }
     }
+
   }
+  
 }
 
 

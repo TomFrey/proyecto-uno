@@ -111,13 +111,13 @@ body{
 
   .wrapper{
     display: grid;
-    grid-template: [row1] "SideSpace-Left Header SideSpace-Right"  1.5*$heightHeader
-                  [row2] "SideSpace-Left Nav SideSpace-Right"      1.5*$heightNavigation
+    grid-template: [row1] "SideSpace-Left Header SideSpace-Right"  $heightHeader
+                  [row2] "SideSpace-Left Nav SideSpace-Right"      $heightNavigation
                   [row3] "SideSpace-Left Main SideSpace-Right"     auto
                   [row4] "SideSpace-Left Footer SideSpace-Right"   50px
                       / auto $maxWidth auto;
                       
-    margin-top: 2*$basicHeight;
+    margin-top: 4*$basicHeight;
 
     header{
       grid-area: 1 / 2 / 2 / 3;

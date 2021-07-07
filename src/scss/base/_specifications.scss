@@ -29,9 +29,23 @@ $basicHeight: 8px;
 $textSize: 1rem;
 $sideTitleSize: 1.5rem;
 $titleSize: 3.5rem;
-$navigationSize: 1.75rem;
+$navigationSize: 1.5rem;
 $heightHeader: 7*$basicHeight;
 $heightNavigation: 7*$basicHeight;
+
+@mixin standardTextFontTEST(){
+	color: $standardTextColor;
+	font-family: $navigationFont;
+	font-size: $textSize;
+	font-weight: 300;
+}
+
+@mixin titleTextFontTEST(){
+	color: $standardTextColor;
+	font-family: $navigationFont;
+	font-size: $titleSize;
+	font-weight: 499;
+}
 
 @mixin standardTextFont(){
 	color: $standardTextColor;
