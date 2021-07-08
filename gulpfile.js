@@ -24,6 +24,11 @@ const allJsFiles = [
 	'./node_modules/slick-carousel/slick/slick.js',
 
 	'./src/assets/js/modules/globals.js',
+	
+	'./src/assets/js/services/ajaxService.js',
+	'./src/assets/js/services/renderData.js',
+	'./src/assets/js/services/getData.js',
+
 	'./src/assets/js/modules/navigation.js',
 	'./src/assets/js/modules/imageSlider.js',
 

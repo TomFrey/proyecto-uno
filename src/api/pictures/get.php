@@ -13,7 +13,7 @@ $responseData = Array();
  */
 function getAllPictures(){
 	$stmtPics = DB::get()->prepare(
-		"SELECT id FROM picture"
+		"SELECT id FROM picture ORDER BY id DESC"
 	);
 	$stmtPics->execute();
 
