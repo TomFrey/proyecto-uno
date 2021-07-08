@@ -39,7 +39,8 @@ html{
 
 
 body{
-	@include standardTextFont();
+  //@include standardTextFont();
+	@include standardTextFontTEST();
 	line-height: 1.25rem;
 }
 
@@ -75,12 +76,14 @@ body{
     grid-area: 3 / 1 / 4 / 2;
     
     .page-title{
-      @include pageTitleTextFont();
+      @include titleTextFontTEST();
+      //@include pageTitleTextFont();
       margin: 0 $basicWidth;
     }
 
     .page-text{
-      @include standardTextFont();
+      @include standardTextFontTEST();
+      //@include standardTextFont();
       margin: 0 $basicWidth;
     }
   }

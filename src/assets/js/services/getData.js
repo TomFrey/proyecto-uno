@@ -6,10 +6,11 @@ const GetData = (function (Service, Render) {
         console.log('GetData.loadAndRenderPictures');
 
 		const promise = new Promise((resolve, reject) => {
-			// alle Kursdaten lesen
+			// load all pictures
 			Service.call('GET', '/api/pictures.php')
 				.then((pictures) => {
-					// Render Pictures
+                    console.log(pictures);
+					// render pictures in portfolio side
 					Render.createPortfolio(pictures);
 					resolve();
 				})

@@ -1,10 +1,12 @@
 .cv-title{
-    @include cvTitleTextFont();
+    @include titleTextFontTEST();
+    //@include cvTitleTextFont();
     margin-bottom: 2*$basicHeight;
 }
 
 .cv-item{
-    @include standardTextFont();
+    @include standardTextFontTEST();
+    //@include standardTextFont();
     display: flex;
     margin-bottom: $basicHeight;
 

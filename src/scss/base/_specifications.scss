@@ -43,8 +43,8 @@ $heightNavigation: 7*$basicHeight;
 @mixin titleTextFontTEST(){
 	color: $standardTextColor;
 	font-family: $navigationFont;
-	font-size: $titleSize;
-	font-weight: 499;
+	font-size: 1.2rem;
+	font-weight: 400;
 }
 
 @mixin standardTextFont(){
