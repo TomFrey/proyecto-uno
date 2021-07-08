@@ -45,7 +45,7 @@ nav{
   
     ul{
       li{
-        padding: $basicHeight $basicWidth;
+        padding: $basicHeight 2.5*$basicWidth;
   
         a:hover{
           color: lighten($standardTextColor, 75%);

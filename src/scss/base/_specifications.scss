@@ -29,21 +29,21 @@ $basicHeight: 8px;
 $textSize: 1rem;
 $sideTitleSize: 1.5rem;
 $titleSize: 3.5rem;
-$navigationSize: 1.5rem;
+$navigationSize: 1.4rem;
 $heightHeader: 7*$basicHeight;
 $heightNavigation: 7*$basicHeight;
 
 @mixin standardTextFontTEST(){
 	color: $standardTextColor;
 	font-family: $navigationFont;
-	font-size: $textSize;
+	font-size: 1.1rem;
 	font-weight: 300;
 }
 
 @mixin titleTextFontTEST(){
 	color: $standardTextColor;
 	font-family: $navigationFont;
-	font-size: 1.2rem;
+	font-size: 1.3rem;
 	font-weight: 400;
 }
 

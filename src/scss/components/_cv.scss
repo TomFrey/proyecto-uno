@@ -15,7 +15,7 @@
     }
 
     .cv-item__text{
-        flex: 4 4 85%;
+        flex: 6 6 85%;
     }
 }
 
@@ -35,5 +35,13 @@
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
 @media screen and (min-width: $breakpoint-large) {    // wenn Bildschirm grösser als, dann...
-   
+    .cv-item{
+        .cv-item__date{
+            flex: 1 1 10%;
+        }
+    
+        .cv-item__text{
+            flex: 9 9 90%;
+        }
+    }
 }

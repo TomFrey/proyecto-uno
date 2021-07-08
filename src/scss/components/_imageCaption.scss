@@ -3,7 +3,8 @@
 }
 
 .imageWithCaption a{
-    @include imageCaptionTextFont();
+    @include standardTextFontTEST();
+    //@include imageCaptionTextFont();
     text-decoration: none;
 }
 
