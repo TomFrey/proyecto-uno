@@ -90,6 +90,7 @@ $slide: all, 0.3s, cubic-bezier(.55,0,.1,1);
         height: 100%;
         width: 100%;
         z-index: 10;
+        overflow: scroll;
     }
 
     .overlay-content{
@@ -99,12 +100,14 @@ $slide: all, 0.3s, cubic-bezier(.55,0,.1,1);
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+        height: 90%;
     }
 
     .overlay-close-wrapper{
+        margin: 0 auto;
         display: flex;
         justify-content: flex-end;
-        max-width: $imageSliderWidth;
+        max-width: 70%;
     }
 
     .overlay-close-button {
@@ -135,8 +138,8 @@ $slide: all, 0.3s, cubic-bezier(.55,0,.1,1);
     }
 
     .slick-slide img {
-        margin: 0;
-        width: 100%;
+        margin: 0 auto;
+        width: 70%;
         max-width: 100%;
         height: auto;
 	}
