@@ -9,6 +9,10 @@
     margin: $basicHeight $basicWidth;
 }
 
+.gridx12__one--col1of1{
+    grid-area: 1 / 1 / 2 / 13;
+}
+
 .gridx12__threeToOne--col1of2, .gridx12__twoToOne--col1of2, .gridx12__oneToOne--col1of2{
     //background-color: green;
     grid-area: 1 / 1 / 2 / 13;
@@ -24,6 +28,7 @@
     grid-area: 1 / 1 / 2 / 13;
 }
 
+
 /* ************************************************************* */
 /* *********** ab hier für mobile querformat ******************* */
 @media screen and (min-width: $breakpoint-medium) {    // wenn Bildschirm grösser als, dann...
@@ -37,7 +42,6 @@
         grid-area: 1 / 7 / 2 / 13;
     }
 }
-
 
 
 /* *************************************************** */
@@ -58,7 +62,7 @@
 		grid-area: 1 / 10 / 2 / 13;
 	}
 
-    .gridx12__twoToOne--col1of2{
+    .gridx12__twoToOne--col1of2, .gridx12__one--col1of1{
 		//background-color: green;
 		grid-area: 1 / 1 / 2 / 9;
 	}

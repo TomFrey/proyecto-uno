@@ -62,8 +62,83 @@ const Render = (function (Globals) {
 	}
 
 
+    function createActualContent(actualData) {
+        const actualDataWrapper = document.createElement('div');
+        actualDataWrapper.classList.add('actual-data-wrapper');
+
+        const pageItemHeadline = document.createElement('div');
+        pageItemHeadline.classList.add('page-item');   
+        if (actualData[0].headlineTitle) {
+            const headlineTitle = document.createElement('p');
+            headlineTitle.classList.add('page-title');
+            headlineTitle.innerHTML = actualData[0].headlineTitle;
+            pageItemHeadline.appendChild(headlineTitle);
+        }
+        if (actualData[0].headlineText) {
+            const headlineText = document.createElement('p');
+            headlineText.classList.add('page-text');
+            headlineText.innerHTML = actualData[0].headlineText;
+            pageItemHeadline.appendChild(headlineText);
+        }
+        actualDataWrapper.appendChild(pageItemHeadline);
+
+        const pageItemVernissage = document.createElement('div');
+        pageItemVernissage.classList.add('page-item');
+        if (actualData[0].vernissageTitle) {
+            const vernissageTitle = document.createElement('p');
+            vernissageTitle.classList.add('page-title');
+            vernissageTitle.innerHTML = actualData[0].vernissageTitle;
+            pageItemVernissage.appendChild(vernissageTitle);
+        }
+        if (actualData[0].vernissageText) {
+            const vernissageText = document.createElement('p');
+            vernissageText.classList.add('page-text');
+            vernissageText.innerHTML = actualData[0].vernissageText;
+            pageItemVernissage.appendChild(vernissageText);
+        }
+        actualDataWrapper.appendChild(pageItemVernissage);
+
+        if (actualData[0].address) {
+            const pageItemAddress = document.createElement('div');
+            pageItemAddress.classList.add('page-item');
+            
+            const addressTitle = document.createElement('p');
+            addressTitle.classList.add('page-title');
+            addressTitle.innerText = 'Adresse';
+
+            const addressText = document.createElement('p');
+            addressText.classList.add('page-text');
+            addressText.innerHTML = actualData[0].address;
+
+            pageItemAddress.appendChild(addressTitle);
+            pageItemAddress.appendChild(addressText);
+
+            actualDataWrapper.appendChild(pageItemAddress);
+        }
+        
+        if (actualData[0].openingHours) {
+            const pageItemOpeningHours = document.createElement('div');
+            pageItemOpeningHours.classList.add('page-item');
+            
+            const openingHoursTitle = document.createElement('p');
+            openingHoursTitle.classList.add('page-title');
+            openingHoursTitle.innerText = 'Öffnungszeiten';
+
+            const openingHoursText = document.createElement('p');
+            openingHoursText.classList.add('page-text');
+            openingHoursText.innerHTML = actualData[0].openingHours;
+
+            pageItemOpeningHours.appendChild(openingHoursTitle);
+            pageItemOpeningHours.appendChild(openingHoursText);
+
+            actualDataWrapper.appendChild(pageItemOpeningHours);
+        }
+
+        return actualDataWrapper;
+	}
+
+
 	function renderPicturesInPortfolio(pictures) {
-		
         const portfolioWrapper = document.querySelector('.portfolio-wrapper');
 
         if (portfolioWrapper !== null) {
@@ -81,8 +156,33 @@ const Render = (function (Globals) {
 	}
 
 
+    function renderActualDataInAktuell(actualData) {
+        const actualDataContainer = document.querySelector('.actual-data');
+
+        if (actualDataContainer !== null) {
+            // delete all current children
+            while (actualDataContainer.firstChild) {
+                actualDataContainer.removeChild(actualDataContainer.firstChild);
+            }
+
+            const noVernissage = document.createElement('p');
+            noVernissage.classList.add('page-text');
+            noVernissage.innerHTML = 'Zur Zeit finden keine Ausstellungen statt.' + '<br>' + 'Ich bin im Atelier am arbeiten...';
+
+            let actualContent = noVernissage;
+            
+            if (actualData[0].isValid === 'true') {
+                actualContent = createActualContent(actualData);
+            }
+         
+            actualDataContainer.appendChild(actualContent);                
+        }
+	}
+
+
 	// public api
 	return {
-		createPortfolio: renderPicturesInPortfolio
+		createPortfolio: renderPicturesInPortfolio,
+        createActual: renderActualDataInAktuell
 	};
 })(Globals);

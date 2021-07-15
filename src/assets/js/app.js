@@ -8,15 +8,24 @@ const App = (function (Navigation, ImageSlider, GetData) {
   function init(){
     console.log('init() of App called');
    
-
-    GetData.loadAndRenderPictures()
+    GetData.loadAndRenderData()
       .then(() => {
-        Navigation.init();
-        ImageSlider.init();
+        
+          GetData.loadAndRenderPictures()
+          .then(() => {
+            Navigation.init();
+            ImageSlider.init();
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+          
       })
       .catch((error) => {
         console.log(error);
       });
+
+   
 
 
   };

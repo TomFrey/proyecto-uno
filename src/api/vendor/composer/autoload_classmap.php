@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Actual' => $baseDir . '/models/Actual.php',
     'Carbon\\Carbon' => $vendorDir . '/nesbot/carbon/src/Carbon/Carbon.php',
     'Carbon\\CarbonConverterInterface' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonConverterInterface.php',
     'Carbon\\CarbonImmutable' => $vendorDir . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',

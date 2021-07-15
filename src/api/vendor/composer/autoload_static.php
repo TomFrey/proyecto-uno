@@ -43,6 +43,7 @@ class ComposerStaticInit21d2bd1c9ffc98e0859a3f3e1f1a9d71
     );
 
     public static $classMap = array (
+        'Actual' => __DIR__ . '/../..' . '/models/Actual.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonConverterInterface' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonConverterInterface.php',
         'Carbon\\CarbonImmutable' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonImmutable.php',
