@@ -1,10 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 const GetData = (function (Service, Render) {
-    console.log('GetData');
-
+    
 	function loadAndRenderPictures() {
-        console.log('GetData.loadAndRenderPictures');
-
 		const promise = new Promise((resolve, reject) => {
 			// load all pictures
 			Service.call('GET', '/api/pictures.php')
@@ -22,15 +19,13 @@ const GetData = (function (Service, Render) {
 		return promise;
 	}
 
-	function loadAndRenderData() {
-        console.log('GetData.loadAndRenderData');
-
+	function loadAndRenderActualData() {
 		const promise = new Promise((resolve, reject) => {
-			// load all pictures
+			// load all data from site 'Aktuell'
 			Service.call('GET', '/api/actual.php')
 				.then((actual) => {
                     console.log(actual);
-					// render actual data in 'Aktuell' side
+					// render actual data into 'Aktuell' site
 					Render.createActual(actual);
 					resolve();
 				})
@@ -38,6 +33,56 @@ const GetData = (function (Service, Render) {
 					console.log(error);
 					reject(error);
 				});
+		});
+		return promise;
+	}
+
+	function loadAndRenderCvData() {
+		const promise = new Promise((resolve, reject) => {
+			// load all data from site 'CV'
+			Service.call('GET', '/api/cv.php')
+				.then((cv) => {
+                    console.log(cv);
+					// render actual data into 'CV' site
+					Render.createCv(cv);
+					resolve();
+				})
+				.catch((error) => {
+					console.log(error);
+					reject(error);
+				});
+		});
+		return promise;
+	}
+
+	function loadAndRenderContactData() {
+		const promise = new Promise((resolve, reject) => {
+			// load all data from site 'Kontakt'
+			Service.call('GET', '/api/contact.php')
+				.then((contact) => {
+                    console.log(contact);
+					// render actual data into 'Kontakt' site
+					Render.createContact(contact);
+					resolve();
+				})
+				.catch((error) => {
+					console.log(error);
+					reject(error);
+				});
+		});
+		return promise;
+	}
+
+	function loadAndRenderData() {
+		const promise = new Promise((resolve, reject) => {
+			Promise.all([loadAndRenderActualData(), loadAndRenderContactData(), loadAndRenderCvData()])
+			.then(() => {
+				resolve();
+			})
+			.catch((error) => {
+				console.log(error);
+				reject(error);
+			});
 		});
 		return promise;
 	}

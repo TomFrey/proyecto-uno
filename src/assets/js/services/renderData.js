@@ -3,6 +3,8 @@ const Render = (function (Globals) {
 	
 
     /* 
+        Creates something like this...
+
         <div class="portfolio-item">
             <div class="imageWithCaption">
                 <a  href="javascript:;"
@@ -137,8 +139,109 @@ const Render = (function (Globals) {
         return actualDataWrapper;
 	}
 
+    
+    /*
+        Creates something like this...
 
-	function renderPicturesInPortfolio(pictures) {
+        <ul>
+            <li>Myriam Arnelas</li>
+            <li>Lauriedhofweg 15</li>
+            <li>(Eingang Mattenstrasse)</li>
+            <li>6300 Zug</li>
+        </ul>
+    */
+    function createAddressContent(contactData) {
+		const contactAddressElement = document.createElement('ul');
+
+        const nameElement = document.createElement('li');
+        nameElement.innerText = contactData[0].name;
+        const addressElement = document.createElement('li');
+        addressElement.innerText = contactData[0].address;
+        const additionalElement = document.createElement('li');
+        additionalElement.innerText = contactData[0].additional;
+        const cityAndZipElement = document.createElement('li');
+        cityAndZipElement.innerText = contactData[0].zip + ' ' + contactData[0].city;
+
+        contactAddressElement.appendChild(nameElement);
+        contactAddressElement.appendChild(addressElement);
+        contactAddressElement.appendChild(additionalElement);
+        contactAddressElement.appendChild(cityAndZipElement);
+
+		return contactAddressElement;
+	}
+
+
+    /*
+        Creates something like this...
+
+        <ul>
+            <li>myriam@arnelas.ch</li>
+            <li>079 486 00 51</li>
+        </ul>
+    */
+    function createPhoneAndEmailContent(contactData) {
+        const phoneEmailElement = document.createElement('ul');
+
+        const emailElement = document.createElement('li');
+        emailElement.innerText = contactData[0].email;
+        const phoneElement = document.createElement('li');
+        phoneElement.innerText = contactData[0].phone;
+
+        phoneEmailElement.appendChild(emailElement);
+        phoneEmailElement.appendChild(phoneElement);
+
+        return phoneEmailElement;
+    }
+
+
+    /*
+        Creates something like this...
+
+         <div class="cv-body">
+            <p class="cv-item">
+                <span class="cv-item__date">2008</span> 
+                <span class="cv-item__text">Atelierstipendium in Havanna, Kuba, Fundación Carolina, Madrid</span> 
+            </p>
+
+            <p class="cv-item">
+                <span class="cv-item__date">2006 / 07</span> 
+                <span class="cv-item__text">Atelierstipendium in Kairo, Konferenz der Schweizer Städte für Kulturfragen</span> 
+            </p>
+
+            <p class="cv-item">
+                Ankäufe von Stadt und Kanton Zug, Gemeinde Baar, privaten Stiftungen und Kunstsammlern
+            </p>
+        </div>
+    */
+    function createCvContent(cvData) {
+        const cvBodyElement = document.createElement('div');
+        cvBodyElement.classList.add('cv-body');
+
+        cvData.forEach((rec) => {
+            const cvItemElement = document.createElement('p');
+            cvItemElement.classList.add('cv-item');
+
+            if (rec.year) {
+                const cvDateElement = document.createElement('span');
+                cvDateElement.classList.add('cv-item__date');
+                cvDateElement.innerText = rec.year;
+        
+                const cvTextElement = document.createElement('span');
+                cvTextElement.classList.add('cv-item__text');
+                cvTextElement.innerText= rec.description;
+        
+                cvItemElement.appendChild(cvDateElement);
+                cvItemElement.appendChild(cvTextElement);
+            } else {
+                cvItemElement.innerText = rec.description;
+            }
+            cvBodyElement.appendChild(cvItemElement);
+        })
+        return cvBodyElement;
+    }
+    
+
+	function renderPicturesIntoPortfolioSite(pictures) {
         const portfolioWrapper = document.querySelector('.portfolio-wrapper');
 
         if (portfolioWrapper !== null) {
@@ -156,7 +259,7 @@ const Render = (function (Globals) {
 	}
 
 
-    function renderActualDataInAktuell(actualData) {
+    function renderActualDataIntoAktuellSite(actualData) {
         const actualDataContainer = document.querySelector('.actual-data');
 
         if (actualDataContainer !== null) {
@@ -180,9 +283,75 @@ const Render = (function (Globals) {
 	}
 
 
+    function renderContactDataIntoKontaktSite(contactData) {
+        const contactDataContainer = document.querySelector('.address');
+
+        if (contactDataContainer !== null) {
+            // delete all current children
+            while (contactDataContainer.firstChild) {
+                contactDataContainer.removeChild(contactDataContainer.firstChild);
+            }
+           let addressContent = createAddressContent(contactData);
+           let phoneAndEmailContent = createPhoneAndEmailContent(contactData);
+           contactDataContainer.appendChild(addressContent);       
+           contactDataContainer.appendChild(phoneAndEmailContent);                
+        }
+	}
+
+
+    function renderCvDataIntoCVSite(cvData) {
+        const cvEducationContainer = document.querySelector('.cv--education');
+        const cvAwardContainer = document.querySelector('.cv--award');
+        const cvSingleExhibitionContainer = document.querySelector('.cv--single-exhibition');
+        const cvMultibleExhibitionContainer = document.querySelector('.cv--multiple-exhibition');
+
+        if (cvEducationContainer !== null) {
+            // delete all current children
+            while (cvEducationContainer.firstChild) {
+                cvEducationContainer.removeChild(cvEducationContainer.firstChild);
+            }
+
+            let cvEducationContent = createCvContent(cvData.filter(rec => rec.category === 'Ausbildung'));
+            cvEducationContainer.appendChild(cvEducationContent);                
+        }
+
+        if (cvAwardContainer !== null) {
+            // delete all current children
+            while (cvAwardContainer.firstChild) {
+                cvAwardContainer.removeChild(cvAwardContainer.firstChild);
+            }
+
+            let cvAwardContent = createCvContent(cvData.filter(rec => rec.category === 'Stipendien, Auszeichnungen und Ankäufe'));
+            cvAwardContainer.appendChild(cvAwardContent);                
+        }
+
+        if (cvSingleExhibitionContainer !== null) {
+            // delete all current children
+            while (cvSingleExhibitionContainer.firstChild) {
+                cvSingleExhibitionContainer.removeChild(cvSingleExhibitionContainer.firstChild);
+            }
+
+            let cvSingleExhibitionContent = createCvContent(cvData.filter(rec => rec.category === 'Einzelausstellungen'));
+            cvSingleExhibitionContainer.appendChild(cvSingleExhibitionContent);                
+        }
+
+        if (cvMultibleExhibitionContainer !== null) {
+            // delete all current children
+            while (cvMultibleExhibitionContainer.firstChild) {
+                cvMultibleExhibitionContainer.removeChild(cvMultibleExhibitionContainer.firstChild);
+            }
+
+            let cvMultipleExhibitionContent = createCvContent(cvData.filter(rec => rec.category === 'Kollektivausstellungen'));
+            cvMultibleExhibitionContainer.appendChild(cvMultipleExhibitionContent);                
+        }
+	}
+
+
 	// public api
 	return {
-		createPortfolio: renderPicturesInPortfolio,
-        createActual: renderActualDataInAktuell
+		createPortfolio: renderPicturesIntoPortfolioSite,
+        createActual: renderActualDataIntoAktuellSite,
+        createContact: renderContactDataIntoKontaktSite,
+        createCv: renderCvDataIntoCVSite
 	};
 })(Globals);
