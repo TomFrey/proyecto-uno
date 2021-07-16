@@ -121,6 +121,8 @@ class ComposerStaticInit21d2bd1c9ffc98e0859a3f3e1f1a9d71
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInit21d2bd1c9ffc98e0859a3f3e1f1a9d71' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Contact' => __DIR__ . '/../..' . '/models/Contact.php',
+        'Cv' => __DIR__ . '/../..' . '/models/Cv.php',
         'DB' => __DIR__ . '/../..' . '/database/DB.php',
         'Picture' => __DIR__ . '/../..' . '/models/Picture.php',
         'Symfony\\Component\\Translation\\Catalogue\\AbstractOperation' => __DIR__ . '/..' . '/symfony/translation/Catalogue/AbstractOperation.php',

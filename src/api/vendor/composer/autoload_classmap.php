@@ -84,6 +84,8 @@ return array(
     'Composer\\Autoload\\ClassLoader' => $vendorDir . '/composer/ClassLoader.php',
     'Composer\\Autoload\\ComposerStaticInit21d2bd1c9ffc98e0859a3f3e1f1a9d71' => $vendorDir . '/composer/autoload_static.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'Contact' => $baseDir . '/models/Contact.php',
+    'Cv' => $baseDir . '/models/Cv.php',
     'DB' => $baseDir . '/database/DB.php',
     'Picture' => $baseDir . '/models/Picture.php',
     'Symfony\\Component\\Translation\\Catalogue\\AbstractOperation' => $vendorDir . '/symfony/translation/Catalogue/AbstractOperation.php',

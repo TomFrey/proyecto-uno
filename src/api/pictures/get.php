@@ -28,7 +28,7 @@ function getAllPictures(){
 /**
  * Liefert alle Bilder.
  *
- * GET: api/picture.php
+ * GET: api/pictures.php
  */
 foreach(getAllPictures() as $pic){
     $row = Array();
