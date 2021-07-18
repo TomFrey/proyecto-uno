@@ -157,6 +157,7 @@ body{
     }
 
     main{
+      margin-top: 2*$basicHeight;
       grid-area: 3 / 2 / 4 / 3;
 
       .page-item{
