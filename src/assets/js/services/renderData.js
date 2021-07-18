@@ -1,6 +1,38 @@
 // eslint-disable-next-line no-unused-vars
 const Render = (function (Globals) {
 	
+    /*
+      Creates something like this...
+      
+       <picture class="imageWithCaption__picture">
+            <source srcset="assets/images/pics/large/01.jpg" media="(min-width: 740px)">
+            <img class="imageWithCaption__img" src="assets/images/pics/small/01.jpg"  alt="" title="">
+        </picture>
+     */
+    function createPictureElement(picture, hasImageWithCaption){
+        const breakPointLarge = Globals.get().breakpointLarge;
+        const pictureElement = document.createElement('picture');
+       
+		const sourceElement = document.createElement('source');
+		sourceElement.setAttribute('srcset', picture.path + 'large/' + picture.name);
+		sourceElement.setAttribute('media', '(min-width: ' + breakPointLarge + 'px)');
+
+		const imgElement = document.createElement('img');
+		imgElement.setAttribute('src', picture.path + 'small/' + picture.name);
+		imgElement.setAttribute('title', 'Bild von Myriam Arnelas: ' + picture.title);
+		imgElement.setAttribute('alt', 'Bild von Myriam Arnelas: ' + picture.title);
+
+        if (hasImageWithCaption) {
+            pictureElement.classList.add('imageWithCaption__picture');
+            imgElement.classList.add('imageWithCaption__img');
+        }
+
+		pictureElement.appendChild(sourceElement);
+		pictureElement.appendChild(imgElement);
+
+        return pictureElement;
+    }
+
 
     /* 
         Creates something like this...
@@ -23,8 +55,6 @@ const Render = (function (Globals) {
         </div>
     */
     function createPortfolioPictureItem(picture) {
-		const breakPointLarge = Globals.get().breakpointLarge;
-
 		const portfolioItemElement = document.createElement('div');
 		portfolioItemElement.classList.add('portfolio-item');
 
@@ -35,28 +65,11 @@ const Render = (function (Globals) {
 		openImageSliderElement.classList.add('imageWithCaption__openImageSlider');
 		openImageSliderElement.setAttribute('href', 'javascript:;');
 		
-		const pictureElement = document.createElement('picture');
-        pictureElement.classList.add('imageWithCaption__picture');
-
-		const sourceElement = document.createElement('source');
-		sourceElement.setAttribute('srcset', picture.path + 'large/' + picture.name);
-		sourceElement.setAttribute('media', '(min-width: ' + breakPointLarge + 'px)');
-
-		const imgElement = document.createElement('img');
-        imgElement.classList.add('imageWithCaption__img');
-		imgElement.setAttribute('src', picture.path + 'large/' + picture.name);
-		imgElement.setAttribute('title', 'Bild von Myriam Arnelas: ' + picture.title);
-		imgElement.setAttribute('alt', 'Bild von Myriam Arnelas: ' + picture.title);
-
-		pictureElement.appendChild(sourceElement);
-		pictureElement.appendChild(imgElement);
-
         const captionElement = document.createElement('span');
         captionElement.classList.add('imageWithCaption__caption');
         captionElement.innerHTML = picture.title + '<br>' + picture.description;
 
-
-        openImageSliderElement.appendChild(pictureElement);
+        openImageSliderElement.appendChild(createPictureElement(picture, true));
         openImageSliderElement.appendChild(captionElement);
         imageWithCaptionElement.appendChild(openImageSliderElement);
         portfolioItemElement.appendChild(imageWithCaptionElement);
@@ -239,7 +252,41 @@ const Render = (function (Globals) {
         })
         return cvBodyElement;
     }
+
+
+    /*
+         <div class="pics-carousel">
+            <div class="pics-carousel-item">
+                <picture class="imageWithCaption__picture">
+                    <source srcset="assets/images/pics/large/01.jpg" media="(min-width: 740px)">
+                    <img class="imageWithCaption__img" src="assets/images/pics/small/01.jpg"  alt="" title="">
+                </picture>
+            </div>
+            <div class="pics-carousel-item">
+                <picture class="imageWithCaption__picture">
+                    <source srcset="assets/images/pics/large/01.jpg" media="(min-width: 740px)">
+                    <img class="imageWithCaption__img" src="assets/images/pics/small/01.jpg"  alt="" title="">
+                </picture>
+            </div>
+            ...
+         </div>
     
+    */
+    function createPictureCarouselContent(pictures) {
+
+        const picsCarouselElement = document.createElement('div');
+        picsCarouselElement.classList.add('pics-carousel');
+
+        pictures.forEach((picture) => {
+            const picsCarouselItem = document.createElement('div');
+            picsCarouselItem.classList.add('pics-carousel-item');
+            picsCarouselItem.appendChild(createPictureElement(picture, false))
+            picsCarouselElement.appendChild(picsCarouselItem);
+        })
+        
+        return picsCarouselElement;
+    }    
+
 
 	function renderPicturesIntoPortfolioSite(pictures) {
         const portfolioWrapper = document.querySelector('.portfolio-wrapper');
@@ -347,11 +394,35 @@ const Render = (function (Globals) {
 	}
 
 
+    function renderPicturesIntoImageSlider(pictures) {
+
+        const promise = new Promise((resolve, reject) => {
+            const pictureCarouselContainer = document.querySelector('.image-carousel-wrapper');
+
+            if (pictureCarouselContainer !== null) {
+                // delete all current children
+                while (pictureCarouselContainer.firstChild) {
+                    pictureCarouselContainer.removeChild(pictureCarouselContainer.firstChild);
+                }
+    
+               let pictureCarouselContent = createPictureCarouselContent(pictures.reverse());
+               pictureCarouselContainer.appendChild(pictureCarouselContent);
+               resolve();
+            } else {
+                reject();
+            }
+			
+		});
+		return promise;
+	}
+
+
 	// public api
 	return {
 		createPortfolio: renderPicturesIntoPortfolioSite,
         createActual: renderActualDataIntoAktuellSite,
         createContact: renderContactDataIntoKontaktSite,
-        createCv: renderCvDataIntoCVSite
+        createCv: renderCvDataIntoCVSite,
+        createPicturesForImageSlider: renderPicturesIntoImageSlider
 	};
 })(Globals);

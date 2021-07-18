@@ -9,7 +9,7 @@ const GetData = (function (Service, Render) {
                     console.log(pictures);
 					// render pictures in portfolio side
 					Render.createPortfolio(pictures);
-					resolve();
+					resolve(pictures);
 				})
 				.catch((error) => {
 					console.log(error);

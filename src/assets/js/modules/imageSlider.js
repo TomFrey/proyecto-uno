@@ -17,7 +17,7 @@ const ImageSlider = (function(Globals){
 
         let fromNumber = event.parentElement.lastElementChild.getAttribute('src').lastIndexOf('/');
         let toNumber = event.parentElement.lastElementChild.getAttribute('src').lastIndexOf('.');
-        let  picNumber = event.parentElement.lastElementChild.getAttribute('src').substr(fromNumber+1, toNumber-fromNumber-1);
+        let picNumber = event.parentElement.lastElementChild.getAttribute('src').substr(fromNumber+1, toNumber-fromNumber-1);
 
         console.log(fromNumber);
         console.log(toNumber);
