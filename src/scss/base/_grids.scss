@@ -49,6 +49,7 @@
 @media screen and (min-width: $breakpoint-large) {    // wenn Bildschirm grösser als, dann...
     
     .gridx12 {
+        grid-column-gap: 4*$basicWidth;
         margin: 2*$basicHeight 2*$basicWidth;
     }
 

@@ -24,9 +24,9 @@
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
 @media screen and (min-width: $breakpoint-large) {    // wenn Bildschirm grösser als, dann...
-    .address{
+   /* .address{
         ul {
             margin: 2*$basicHeight 2*$basicWidth;
         }
-    }
+    } */
 }
