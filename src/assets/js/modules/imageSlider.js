@@ -32,7 +32,9 @@ const ImageSlider = (function(Globals){
                 {
                 breakpoint: breakpointLarge,
                 settings: {
-                            arrows: false,
+                            arrows: true,
+                            adaptiveHeight: true,
+                            variableWidth: false,
                         }
                 }
             ]

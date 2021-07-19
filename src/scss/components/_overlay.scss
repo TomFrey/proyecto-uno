@@ -73,6 +73,49 @@ $slide: all, 0.3s, cubic-bezier(.55,0,.1,1);
         max-width: 50%;
         height: auto;
 	}
+
+
+    .slick-prev:before, .slick-next:before {
+		color: black
+	}
+
+    .slick-arrow {
+		&:before {
+			content: "";
+			position: absolute;
+			display: block;
+			top: 50%;
+			margin-top: -21px;
+			width: 6*$basicWidth;
+			height: 6*$basicHeight;
+            border-top: 2px solid #FFFFFF;
+            border-left: 2px solid #FFFFFF;
+            left: 16px;
+		}
+
+		&:after {
+			display: none;
+		}
+
+		&.slick-prev {
+			left: $basicWidth;
+            z-index: 1;
+
+            &:before {
+                @include transform(rotate(-45 + deg));
+            }
+		}
+
+		&.slick-next {
+            right: 8.5*$basicWidth;
+            z-index: 1;
+			
+            &:before {
+                @include transform(rotate(135 + deg));
+            }
+		}
+	}
+
 }
 
 
