@@ -10,6 +10,44 @@ const ImageSlider = (function(Globals){
     const modalCloseButton = document.querySelector('.overlay-close-button');
 
     let arnelasPictures;
+
+   
+    function closeImageSliderWhenAreaOutsideImgIsClicked() {
+        if (Globals.get().documentWidth < breakpointLarge) {
+            const imageOfTheSliders = document.querySelectorAll('.slick-slide .pics-carousel-item img');
+            const prevArrow = document.querySelector('.pics-carousel .slick-prev');
+            const nextArrow = document.querySelector('.pics-carousel .slick-next');
+            let justOnes = true;
+
+            if (imageOfTheSliders !== null) {
+                imageOfTheSliders.forEach((imageOfTheSlider) => {
+                    imageOfTheSlider.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                    });
+                });
+            }
+           
+            if (prevArrow !== null) {
+                prevArrow.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                });
+            }
+           
+            if (nextArrow !== null) {
+                nextArrow.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                });
+            }
+           
+            overlay.addEventListener('click', (event) => { 
+                //for a reason I don't know it's closed twice :-(
+                if (justOnes) {
+                    closeImageSlider(event.target);
+                    justOnes = false;
+                }
+            });
+        }
+    }
     
 
     function prepareImageSlider(event) {
@@ -40,6 +78,9 @@ const ImageSlider = (function(Globals){
             ]
         });
         toggleImageSlider(event);
+
+        //close image slider when the area outside a picture is clicked
+        closeImageSliderWhenAreaOutsideImgIsClicked();
 	}
 
 
@@ -56,8 +97,6 @@ const ImageSlider = (function(Globals){
 
 
     function init(){
-        console.log('init() of ImageSlider called');
-
         if (modalCloseButton !== null) {
             modalCloseButton.addEventListener('click', (event) => {
                 closeImageSlider(event.target);
@@ -65,6 +104,7 @@ const ImageSlider = (function(Globals){
             });
         }
 
+        //open image slider when any picture is clicked
         arnelasPictures = document.querySelectorAll('.imageWithCaption__openImageSlider');
 		if (arnelasPictures !== null) {
 			arnelasPictures.forEach((arnelasPicture) => {
@@ -81,3 +121,5 @@ const ImageSlider = (function(Globals){
         init: init
     };
 })(Globals);
+
+

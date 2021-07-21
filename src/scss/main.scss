@@ -126,7 +126,7 @@ body{
                   [row2] "SideSpace-Left Nav SideSpace-Right"      $heightNavigation
                   [row3] "SideSpace-Left Main SideSpace-Right"     auto
                   [row4] "SideSpace-Left Footer SideSpace-Right"   50px
-                      / auto $maxWidth auto;
+                      / auto 90% auto;
                       
     margin-top: 4*$basicHeight;
 
@@ -173,5 +173,20 @@ body{
       grid-area: 4 / 2 / 5 / 3;
     }
 
+  }
+}
+
+
+/* *************************************************** */
+/* *********** ab hier für desktop ******************* */
+@media screen and (min-width: $maxWidth) {    // wenn Bildschirm die maximale Breite erreicht hat
+
+  .wrapper{
+    display: grid;
+    grid-template: [row1] "SideSpace-Left Header SideSpace-Right"  $heightHeader
+                  [row2] "SideSpace-Left Nav SideSpace-Right"      $heightNavigation
+                  [row3] "SideSpace-Left Main SideSpace-Right"     auto
+                  [row4] "SideSpace-Left Footer SideSpace-Right"   50px
+                      / auto $maxWidth auto;
   }
 }
