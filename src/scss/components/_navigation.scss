@@ -7,7 +7,7 @@ nav{
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    margin-top: 1.5*$basicHeight;
+    margin: 1.5*$basicHeight 0 2*$basicHeight 0;
 
     li{
       list-style: none;
@@ -46,7 +46,7 @@ nav{
     ul{
       display: flex;
       justify-content: flex-end;
-      margin-top: 0;
+      margin: 4.5*$basicHeight 0 0 0;
 
       li{
         padding: $basicHeight 2.5*$basicWidth;

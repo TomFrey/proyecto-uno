@@ -9,6 +9,16 @@
     margin: $basicHeight $basicWidth;
 }
 
+.gridx12-header {
+	display: grid;
+	grid: [Zeile1] "row1 row1 row1 row1 row1 row1 row1 row1 row1 row1 row1 row1" auto [Zeile1Ende]
+                   / 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-row-gap: 2*$basicWidth;
+    grid-column-gap: 2*$basicWidth;
+   
+    margin: 0 $basicWidth;
+}
+
 .gridx12__one--col1of1{
     grid-area: 1 / 1 / 2 / 13;
 }
@@ -51,6 +61,11 @@
     .gridx12 {
         grid-column-gap: 4*$basicWidth;
         margin: 2*$basicHeight 2*$basicWidth;
+    }
+
+    .gridx12-header {
+        grid-column-gap: 4*$basicWidth;
+        margin: 0 2*$basicWidth;
     }
 
     .gridx12__threeToOne--col1of2{

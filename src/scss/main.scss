@@ -55,6 +55,12 @@ body{
   background-color: $standardBackgroundColor;
   margin-top: $basicHeight;
 
+  .stickyHeader-wrapper{
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
   header{
     grid-area: 1 / 1 / 2 / 2;
     background-color: $titleBackgroundColor;
@@ -64,6 +70,7 @@ body{
       height: $heightHeader;
       line-height: $heightHeader;
       text-align: center;
+      margin-top: $basicHeight;
     }
   }
 
@@ -128,7 +135,7 @@ body{
                   [row4] "SideSpace-Left Footer SideSpace-Right"   50px
                       / auto 90% auto;
                       
-    margin-top: 4*$basicHeight;
+    margin-top: $basicHeight;
 
     header{
       grid-area: 1 / 2 / 2 / 3;
@@ -138,6 +145,7 @@ body{
         line-height: unset;
         text-align: end;
         font-size: 4.5rem;
+        margin-top: 5*$basicHeight;
       }
     }
 
@@ -157,7 +165,7 @@ body{
     }
 
     main{
-      margin-top: 2*$basicHeight;
+      margin-top: 5*$basicHeight;
       grid-area: 3 / 2 / 4 / 3;
 
       .page-item{
