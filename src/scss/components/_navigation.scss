@@ -6,16 +6,16 @@ nav{
   ul{
     display: flex;
     justify-content: center;
-    height: $heightNavigation;
-    line-height: $heightNavigation;
+    align-items: flex-end;
+    margin-top: 1.5*$basicHeight;
 
     li{
       list-style: none;
-      padding: 0.5*$basicHeight 0.5*$basicWidth;
 
       a{
         color: $standardTextColor;
         text-decoration: none;
+        padding: 0.5*$basicHeight 0.5*$basicWidth;
       }
 
       a.js-isSelected{
@@ -44,12 +44,20 @@ nav{
     grid-area: 2 / 2 / 3 / 3;
   
     ul{
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0;
+
       li{
         padding: $basicHeight 2.5*$basicWidth;
   
         a:hover{
           color: lighten($standardTextColor, 75%);
         }
+      }
+
+      li:last-of-type{
+        padding: $basicHeight 32px $basicHeight 2.5*$basicWidth;
       }
     }
 
