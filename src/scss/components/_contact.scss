@@ -1,4 +1,3 @@
-
 .contact__picture{
 
     .contact__picture__img{
@@ -12,6 +11,11 @@
     }
 }
 
+.phone-number{
+    color: $standardTextColor;
+    text-decoration: none;
+}
+
 
 /* ************************************************************* */
 /* *********** ab hier für mobile querformat ******************* */
@@ -20,13 +24,8 @@
 }
 
 
-
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
 @media screen and (min-width: $breakpoint-large) {    // wenn Bildschirm grösser als, dann...
-   /* .address{
-        ul {
-            margin: 2*$basicHeight 2*$basicWidth;
-        }
-    } */
+  
 }

@@ -189,16 +189,23 @@ const Render = (function (Globals) {
 
         <ul>
             <li>myriam@arnelas.ch</li>
-            <li>079 486 00 51</li>
+            <li>
+                <a href="tel:+41794860051">079 486 00 51</a>
+            </li>
         </ul>
     */
     function createPhoneAndEmailContent(contactData) {
+        const phoneNumberWithoutLeedingZeroAndSpaces = contactData[0].phone.replace(/^([0\s]+)|\s+/g, '');
         const phoneEmailElement = document.createElement('ul');
-
         const emailElement = document.createElement('li');
         emailElement.innerText = contactData[0].email;
+        
         const phoneElement = document.createElement('li');
-        phoneElement.innerText = contactData[0].phone;
+        const phoneLinkElement = document.createElement('a');
+		phoneLinkElement.classList.add('phone-number');
+		phoneLinkElement.setAttribute('href', 'tel:+41' + phoneNumberWithoutLeedingZeroAndSpaces);
+        phoneLinkElement.innerText = contactData[0].phone;
+        phoneElement.appendChild(phoneLinkElement);
 
         phoneEmailElement.appendChild(emailElement);
         phoneEmailElement.appendChild(phoneElement);
