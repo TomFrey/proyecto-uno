@@ -16,7 +16,7 @@ $titleFontAlegreyaSans: "Alegreya Sans", sans-serif;
 /*** colors ***/
 $standardTextColor: #000000;
 $standardBackgroundColor: #FFFFFF;
-$titleBackgroundColor: $standardBackgroundColor;
+$titleBackgroundColor: rgba($standardBackgroundColor, 0.8);
 $navBackgroundColor: $standardBackgroundColor;
 
 

@@ -56,13 +56,13 @@ body{
   margin-top: $basicHeight;
 
   .stickyHeader-wrapper{
+    grid-area: 1 / 1 / 3 / 2;
     position: sticky;
     top: 0;
     z-index: 2;
   }
 
   header{
-    grid-area: 1 / 1 / 2 / 2;
     background-color: $titleBackgroundColor;
 
     .title{
@@ -75,7 +75,7 @@ body{
   }
 
   nav{
-    grid-area: 2 / 1 / 3 / 2;
+    background-color: $titleBackgroundColor;
     @include navigationTextFont();
   }
 
@@ -88,13 +88,11 @@ body{
 
     .page-title{
       @include titleTextFontTEST();
-      //@include pageTitleTextFont();
       margin: 0;
     }
 
     .page-text{
       @include standardTextFontTEST();
-      //@include standardTextFont();
       margin: 0;
     }
   }
@@ -137,9 +135,12 @@ body{
                       
     margin-top: $basicHeight;
 
-    header{
-      grid-area: 1 / 2 / 2 / 3;
+    .stickyHeader-wrapper{
+      grid-area: 1 / 2 / 3 / 3;
+    }
 
+    header{
+     
       .title{
         height: unset;
         line-height: unset;
@@ -147,11 +148,6 @@ body{
         font-size: 4.5rem;
         margin-top: 5*$basicHeight;
       }
-    }
-
-    nav{
-      grid-area: 2 / 2 / 3 / 3;
-      //font-size: 2rem;
     }
 
     .side-space--left{
@@ -171,10 +167,6 @@ body{
       .page-item{
         margin-bottom: 4*$basicHeight;
       }
-
-      /*.page-title, .page-text{
-        margin: 0 2*$basicWidth;
-      }*/
     }
 
     footer{
