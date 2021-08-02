@@ -15,12 +15,16 @@ nav{
       a{
         color: $standardTextColor;
         text-decoration: none;
-        padding: 0.5*$basicHeight 0.5*$basicWidth;
+        padding: 0.5*$basicHeight 0.75*$basicWidth;
       }
 
       a.js-isSelected{
         @include navigationSelectedTextFont();
       }
+    }
+
+    li:first-of-type{
+      padding: 0 0 0 16px;
     }
 
   }
@@ -31,7 +35,19 @@ nav{
 /* ************************************************************* */
 /* *********** ab hier für mobile querformat ******************* */
 @media screen and (min-width: $breakpoint-medium) {    // wenn Bildschirm grösser als, dann...
+  nav{
+    ul{
+      li{
+        a{
+          padding: 0.5*$basicHeight 1.5*$basicWidth;
+        }
+      }
 
+      li:first-of-type{
+        padding: 0 0 0 20px;
+      }
+    }
+  }
 }
 
 
@@ -50,14 +66,22 @@ nav{
 
       li{
         padding: $basicHeight 2.5*$basicWidth;
+
+        a{
+          padding: 0.5*$basicHeight $basicWidth;
+        }
   
         a:hover{
           color: lighten($standardTextColor, 75%);
         }
       }
 
+      li:first-of-type{
+        padding: $basicHeight 2.5*$basicWidth;
+      }
+
       li:last-of-type{
-        padding: $basicHeight 32px $basicHeight 2.5*$basicWidth;
+        padding: $basicHeight 25px $basicHeight 2.5*$basicWidth;
       }
     }
 
