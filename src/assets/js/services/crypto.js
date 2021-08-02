@@ -1,6 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 const Crypto = (function () {
 
+    /**
+     * Original code from https://michsch.github.io/antispammail/
+     */
     function encryptDecrypt(originalString, nFromCharCode) {
         let i, n, newString;
         if (nFromCharCode == null) {

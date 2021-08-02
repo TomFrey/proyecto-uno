@@ -421,10 +421,7 @@ const Render = (function (Globals) {
                let pictureCarouselContent = createPictureCarouselContent(pictures.reverse());
                pictureCarouselContainer.appendChild(pictureCarouselContent);
                resolve();
-            } else {
-                reject();
             }
-			
 		});
 		return promise;
 	}
