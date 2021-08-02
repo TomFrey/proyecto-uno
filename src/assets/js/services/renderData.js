@@ -195,11 +195,17 @@ const Render = (function (Globals) {
         </ul>
     */
     function createPhoneAndEmailContent(contactData) {
-        const phoneNumberWithoutLeedingZeroAndSpaces = contactData[0].phone.replace(/^([0\s]+)|\s+/g, '');
         const phoneEmailElement = document.createElement('ul');
+
+        const encryptedEMail = Crypto.encryptEMail(contactData[0].email);
         const emailElement = document.createElement('li');
-        emailElement.innerText = contactData[0].email;
+        const emailLinkElement = document.createElement('a');
+		emailLinkElement.classList.add('email');
+		emailLinkElement.setAttribute('href', 'javascript:Crypto.linkToUnCryptMailto(\'' + encryptedEMail + '\');');
+        emailLinkElement.innerText = 'E-Mail';
+        emailElement.appendChild(emailLinkElement);
         
+        const phoneNumberWithoutLeedingZeroAndSpaces = contactData[0].phone.replace(/^([0\s]+)|\s+/g, '');
         const phoneElement = document.createElement('li');
         const phoneLinkElement = document.createElement('a');
 		phoneLinkElement.classList.add('phone-number');

@@ -25,6 +25,7 @@ const allJsFiles = [
 
 	'./src/assets/js/modules/globals.js',
 	
+	'./src/assets/js/services/crypto.js',
 	'./src/assets/js/services/ajaxService.js',
 	'./src/assets/js/services/renderData.js',
 	'./src/assets/js/services/getData.js',

@@ -11,7 +11,7 @@
     }
 }
 
-.phone-number{
+.phone-number, .email{
     color: $standardTextColor;
     text-decoration: none;
 }
@@ -27,5 +27,7 @@
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
 @media screen and (min-width: $breakpoint-large) {    // wenn Bildschirm grösser als, dann...
-  
+    .phone-number:hover, .email:hover{
+        color: lighten($standardTextColor, 75%);
+    }
 }
