@@ -1,37 +1,42 @@
 // eslint-disable-next-line no-unused-vars
 const Render = (function (Globals) {
 	
-    /*
+     /*
       Creates something like this...
       
        <picture class="imageWithCaption__picture">
-            <source srcset="assets/images/pics/large/01.jpg" media="(min-width: 740px)">
+            <source srcset="assets/images/pics/large/01.jpg" media="(min-width: 1050px)">
+            <source srcset="assets/images/pics/medium/01.jpg" media="(min-width: 440px)">
             <img class="imageWithCaption__img" src="assets/images/pics/small/01.jpg"  alt="" title="">
         </picture>
      */
-    function createPictureElement(picture, hasImageWithCaption){
-        const breakPointLarge = Globals.get().breakpointLarge;
-        const pictureElement = document.createElement('picture');
-       
-		const sourceElement = document.createElement('source');
-		sourceElement.setAttribute('srcset', picture.path + 'large/' + picture.name);
-		sourceElement.setAttribute('media', '(min-width: ' + breakPointLarge + 'px)');
-
-		const imgElement = document.createElement('img');
-		imgElement.setAttribute('src', picture.path + 'small/' + picture.name);
-		imgElement.setAttribute('title', 'Bild von Myriam Arnelas: ' + picture.title);
-		imgElement.setAttribute('alt', 'Bild von Myriam Arnelas: ' + picture.title);
-
-        if (hasImageWithCaption) {
+        function createPictureElementForPortfolio(picture){
+            const breakPointLarge = Globals.get().breakpointLarge;
+            const breakpointMedium = Globals.get().breakpointMedium;
+            const pictureElement = document.createElement('picture');
+           
+            const sourceElementOne = document.createElement('source');
+            sourceElementOne.setAttribute('srcset', picture.path + 'small/' + picture.name);
+            sourceElementOne.setAttribute('media', '(min-width: ' + breakPointLarge + 'px)');
+    
+            const sourceElementTwo = document.createElement('source');
+            sourceElementTwo.setAttribute('srcset', picture.path + 'small/' + picture.name);
+            sourceElementTwo.setAttribute('media', '(min-width: ' + breakpointMedium + 'px)');
+    
+            const imgElement = document.createElement('img');
+            imgElement.setAttribute('src', picture.path + 'small/' + picture.name);
+            imgElement.setAttribute('title', 'Bild von Myriam Arnelas: ' + picture.title);
+            imgElement.setAttribute('alt', 'Bild von Myriam Arnelas: ' + picture.title);
+    
             pictureElement.classList.add('imageWithCaption__picture');
             imgElement.classList.add('imageWithCaption__img');
+            
+            pictureElement.appendChild(sourceElementOne);
+            pictureElement.appendChild(sourceElementTwo);
+            pictureElement.appendChild(imgElement);
+    
+            return pictureElement;
         }
-
-		pictureElement.appendChild(sourceElement);
-		pictureElement.appendChild(imgElement);
-
-        return pictureElement;
-    }
 
 
     /* 
@@ -69,7 +74,7 @@ const Render = (function (Globals) {
         captionElement.classList.add('imageWithCaption__caption');
         captionElement.innerHTML = picture.title + '<br>' + picture.description;
 
-        openImageSliderElement.appendChild(createPictureElement(picture, true));
+        openImageSliderElement.appendChild(createPictureElementForPortfolio(picture));
         openImageSliderElement.appendChild(captionElement);
         imageWithCaptionElement.appendChild(openImageSliderElement);
         portfolioItemElement.appendChild(imageWithCaptionElement);
@@ -268,6 +273,41 @@ const Render = (function (Globals) {
 
 
     /*
+      Creates something like this...
+      
+       <picture class="imageWithCaption__picture">
+            <source srcset="assets/images/pics/large/01.jpg" media="(min-width: 1050px)">
+            <source srcset="assets/images/pics/medium/01.jpg" media="(min-width: 440px)">
+            <img src="assets/images/pics/small/01.jpg"  alt="" title="">
+        </picture>
+     */
+    function createPictureElementForCarousel(picture){
+        const breakPointLarge = Globals.get().breakpointLarge;
+        const breakpointMedium = Globals.get().breakpointMedium;
+        const pictureElement = document.createElement('picture');
+        
+        const sourceElementOne = document.createElement('source');
+        sourceElementOne.setAttribute('srcset', picture.path + 'large/' + picture.name);
+        sourceElementOne.setAttribute('media', '(min-width: ' + breakPointLarge + 'px)');
+
+        const sourceElementTwo = document.createElement('source');
+        sourceElementTwo.setAttribute('srcset', picture.path + 'medium/' + picture.name);
+        sourceElementTwo.setAttribute('media', '(min-width: ' + breakpointMedium + 'px)');
+
+        const imgElement = document.createElement('img');
+        imgElement.setAttribute('src', picture.path + 'small/' + picture.name);
+        imgElement.setAttribute('title', 'Bild von Myriam Arnelas: ' + picture.title);
+        imgElement.setAttribute('alt', 'Bild von Myriam Arnelas: ' + picture.title);
+
+        pictureElement.appendChild(sourceElementOne);
+        pictureElement.appendChild(sourceElementTwo);
+        pictureElement.appendChild(imgElement);
+
+        return pictureElement;
+    }
+    
+
+    /*
          <div class="pics-carousel">
             <div class="pics-carousel-item">
                 <picture class="imageWithCaption__picture">
@@ -293,7 +333,7 @@ const Render = (function (Globals) {
         pictures.forEach((picture) => {
             const picsCarouselItem = document.createElement('div');
             picsCarouselItem.classList.add('pics-carousel-item');
-            picsCarouselItem.appendChild(createPictureElement(picture, false))
+            picsCarouselItem.appendChild(createPictureElementForCarousel(picture))
             picsCarouselElement.appendChild(picsCarouselItem);
         })
         
@@ -310,7 +350,6 @@ const Render = (function (Globals) {
                 portfolioWrapper.removeChild(portfolioWrapper.firstChild);
             }
 
-            // add the course dates
             pictures.forEach((picture) => {
                 const portfolioItem = createPortfolioPictureItem(picture);
                 portfolioWrapper.appendChild(portfolioItem);

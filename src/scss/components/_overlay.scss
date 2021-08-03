@@ -70,7 +70,7 @@ $slide: all, 0.3s, cubic-bezier(.55,0,.1,1);
 
     .slick-slide img {
         margin: 0 auto;
-        max-width: 55%;  //50%;
+        max-width: 55%;
         height: auto;
 	}
 
@@ -119,6 +119,29 @@ $slide: all, 0.3s, cubic-bezier(.55,0,.1,1);
 }
 
 
+/* ************************************************************* */
+/* *********** ab hier für mobile querformat ******************* */
+@media screen and (min-width: 760px) and (orientation: portrait) {    // spezielle Grössen für Tablets
+
+    .slick-slide img {
+        margin: 0 auto;
+        max-width: 75%;
+        height: auto;
+	}
+}
+
+
+/* ************************************************************* */
+/* *********** ab hier für mobile querformat ******************* */
+@media screen and (min-width: 1000px) and (orientation: landscape) {    // spezielle Grössen für Tablets
+
+    .slick-slide img {
+        margin: 0 auto;
+        max-width: 75%;
+        height: auto;
+	}
+}
+
 
 /* *************************************************** */
 /* *********** ab hier für desktop ******************* */
@@ -150,7 +173,7 @@ $slide: all, 0.3s, cubic-bezier(.55,0,.1,1);
         margin: 0 auto;
         display: flex;
         justify-content: flex-end;
-        max-width: 100%; //70%;
+        max-width: 100%;
     }
 
     .overlay-close-button {
@@ -182,7 +205,7 @@ $slide: all, 0.3s, cubic-bezier(.55,0,.1,1);
 
     .slick-slide img {
         margin: 0 auto;
-        width: 100%; //70%;
+        width: 100%;
         max-width: 100%;
         height: auto;
 	}
