@@ -1,12 +1,10 @@
 .cv-title{
-    @include titleTextFontTEST();
-    //@include cvTitleTextFont();
+    @include pageTitleTextFont();
     margin-bottom: 2*$basicHeight;
 }
 
 .cv-item{
-    @include standardTextFontTEST();
-    //@include standardTextFont();
+    @include standardTextFont();
     display: flex;
     margin-bottom: $basicHeight;
 
@@ -29,7 +27,6 @@
 @media screen and (min-width: $breakpoint-medium) {    // wenn Bildschirm grösser als, dann...
    
 }
-
 
 
 /* *************************************************** */

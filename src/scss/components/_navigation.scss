@@ -1,4 +1,3 @@
-
 nav{
   grid-area: 2 / 1 / 3 / 2;
   background-color: $navBackgroundColor;
@@ -31,7 +30,6 @@ nav{
 }
 
 
-
 /* ************************************************************* */
 /* *********** ab hier für mobile querformat ******************* */
 @media screen and (min-width: $breakpoint-medium) {    // wenn Bildschirm grösser als, dann...
@@ -49,7 +47,6 @@ nav{
     }
   }
 }
-
 
 
 /* *************************************************** */
@@ -84,9 +81,7 @@ nav{
         padding: $basicHeight 25px $basicHeight 2.5*$basicWidth;
       }
     }
-
   }
-  
 }
 
 
