@@ -11,6 +11,7 @@ class Contact
     private $city;
     private $phone;
     private $email;
+	private $emailText;
 
 
 	public function __construct($id = false)
@@ -36,6 +37,7 @@ class Contact
             $this->setCity($contactData['city']);
             $this->setPhone($contactData['phone']);
             $this->setEmail($contactData['email']);
+			$this->setEmailText($contactData['email_text']);
 		}
 	}
 
@@ -116,5 +118,15 @@ class Contact
 	public function setEmail($email)
 	{
 		$this->email = $email;
+	}
+
+
+	public function getEmailText()
+	{
+		return $this->emailText;
+	}
+	public function setEmailText($emailText)
+	{
+		$this->emailText = $emailText;
 	}
 }

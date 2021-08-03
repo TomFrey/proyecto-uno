@@ -40,6 +40,7 @@ foreach(getContactData() as $contact){
     $row['city'] = $contact->getCity();
     $row['phone'] = $contact->getPhone();
     $row['email'] = $contact->getEmail();
+    $row['emailText'] = $contact->getEmailText();
 
     array_push($responseData, $row);
 }

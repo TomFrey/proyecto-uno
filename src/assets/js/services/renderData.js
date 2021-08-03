@@ -207,7 +207,7 @@ const Render = (function (Globals) {
         const emailLinkElement = document.createElement('a');
 		emailLinkElement.classList.add('email');
 		emailLinkElement.setAttribute('href', 'javascript:Crypto.linkToUnCryptMailto(\'' + encryptedEMail + '\');');
-        emailLinkElement.innerText = 'E-Mail';
+        emailLinkElement.innerText = contactData[0].emailText;
         emailElement.appendChild(emailLinkElement);
         
         const phoneNumberWithoutLeedingZeroAndSpaces = contactData[0].phone.replace(/^([0\s]+)|\s+/g, '');
