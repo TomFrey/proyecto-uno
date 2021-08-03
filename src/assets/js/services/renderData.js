@@ -457,7 +457,7 @@ const Render = (function (Globals) {
                     pictureCarouselContainer.removeChild(pictureCarouselContainer.firstChild);
                 }
     
-               let pictureCarouselContent = createPictureCarouselContent(pictures.reverse());
+               let pictureCarouselContent = createPictureCarouselContent(pictures);
                pictureCarouselContainer.appendChild(pictureCarouselContent);
                resolve();
             }

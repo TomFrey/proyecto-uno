@@ -50,29 +50,22 @@ const ImageSlider = (function(Globals){
     }
     
 
-    function prepareImageSlider(event) {
-        console.log(event.parentElement.lastElementChild.getAttribute('src'));
-
+    function prepareImageSlider(event, totalNumerOfSlides) {
         let fromNumber = event.parentElement.lastElementChild.getAttribute('src').lastIndexOf('/');
         let toNumber = event.parentElement.lastElementChild.getAttribute('src').lastIndexOf('.');
         let picNumber = event.parentElement.lastElementChild.getAttribute('src').substr(fromNumber+1, toNumber-fromNumber-1);
-
-        console.log(fromNumber);
-        console.log(toNumber);
-        console.log(parseInt(picNumber, 10)-1);
-
+        let initialSlide = parseInt(totalNumerOfSlides, 10) - parseInt(picNumber, 10);
+       
         $('.pics-carousel').slick({
             slidesToShow: 1,
             adaptiveHeight: true,
-            //variableWidth: true,
-            initialSlide: parseInt(picNumber, 10)-1,
+            initialSlide: initialSlide, 
             responsive: [
                 {
                 breakpoint: breakpointLarge,
                 settings: {
                             arrows: true,
-                            adaptiveHeight: true,
-                            variableWidth: false,
+                            adaptiveHeight: true
                         }
                 }
             ]
@@ -100,17 +93,15 @@ const ImageSlider = (function(Globals){
         if (modalCloseButton !== null) {
             modalCloseButton.addEventListener('click', (event) => {
                 closeImageSlider(event.target);
-                console.log('Close Button angeklickt....');
             });
         }
 
         //open image slider when any picture is clicked
         arnelasPictures = document.querySelectorAll('.imageWithCaption__openImageSlider');
 		if (arnelasPictures !== null) {
-			arnelasPictures.forEach((arnelasPicture) => {
+			arnelasPictures.forEach((arnelasPicture, key, allPictures) => {
 				arnelasPicture.addEventListener('click', (event) => {
-                    prepareImageSlider(event.target);
-                    console.log('Image angeklickt....');
+                    prepareImageSlider(event.target, allPictures.length);
 				});
 			});
 		}
