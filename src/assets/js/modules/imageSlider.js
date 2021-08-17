@@ -1,8 +1,6 @@
 'use strict';
 
 const ImageSlider = (function(Globals){
-    console.log('inside ImageSlider IIFE');
-
     const OPEN_OVERLAY = 'js-openOverlay';
     const breakpointLarge = Globals.get().breakpointLarge;
 
