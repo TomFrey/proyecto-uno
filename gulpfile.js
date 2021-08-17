@@ -236,8 +236,8 @@ const allJsFiles = [
  */
  function replaceProductionCredentials(){
 	return gulp.src(['./src/api/database/DB.php'])
-		.pipe(replace('rootuser', configFile.config.production.user))
-		.pipe(replace('rootpw', configFile.config.production.pass))
+		.pipe(replace('rootuser', configFile.config.productionDB.user))
+		.pipe(replace('rootpw', configFile.config.productionDB.pass))
 		.pipe(gulp.dest('dist/api/database'));
 }
 
@@ -252,6 +252,19 @@ const getFtpTestConnection = () => {
 		log: gUtil.log
 	})
 }
+
+
+const getFtpProductionConnection = () => {
+	return ftp.create({
+		host: 'e129832-ftp.services.easyname.eu',
+		port: 21,
+		user: configFile.config.productionFtp.user,
+		password: configFile.config.productionFtp.pass,
+		parallel: 5,
+		log: gUtil.log
+	})
+}
+
 
 function remoteDeploy(getFtpConnection, ftpDestination){
 	const connection = getFtpConnection();
@@ -298,3 +311,5 @@ exports.build = build();
 // Mit 'gulp deployToTest' wird das Projekt auf den arnelas.mitlinxlernen.ch FTP Server gestellt
 // Die Bilder werden jeweils nicht hochgeladen
 exports.deployToTest = gulp.series(build('toTestEnviroment'), remoteDeploy.bind(this, getFtpTestConnection, '/'));
+
+exports.deployToProduction = gulp.series(build(), remoteDeploy.bind(this, getFtpProductionConnection, '/html'));
