@@ -6,8 +6,6 @@ const App = (function (Navigation, ImageSlider, GetData, Render) {
 
   /**** wird nach dem DOM ready ausgeführt ****/
   function init(){
-    console.log('init() of App called');
-
     Navigation.init();
    
     GetData.loadAndRenderData()

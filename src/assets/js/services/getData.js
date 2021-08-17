@@ -6,7 +6,6 @@ const GetData = (function (Service, Render) {
 			// load all pictures
 			Service.call('GET', '/api/pictures.php')
 				.then((pictures) => {
-                    console.log(pictures);
 					// render pictures in portfolio side
 					Render.createPortfolio(pictures);
 					resolve(pictures);
@@ -24,7 +23,6 @@ const GetData = (function (Service, Render) {
 			// load all data from site 'Aktuell'
 			Service.call('GET', '/api/actual.php')
 				.then((actual) => {
-                    console.log(actual);
 					// render actual data into 'Aktuell' site
 					Render.createActual(actual);
 					resolve();
@@ -42,7 +40,6 @@ const GetData = (function (Service, Render) {
 			// load all data from site 'CV'
 			Service.call('GET', '/api/cv.php')
 				.then((cv) => {
-                    console.log(cv);
 					// render actual data into 'CV' site
 					Render.createCv(cv);
 					resolve();
@@ -60,7 +57,6 @@ const GetData = (function (Service, Render) {
 			// load all data from site 'Kontakt'
 			Service.call('GET', '/api/contact.php')
 				.then((contact) => {
-                    console.log(contact);
 					// render actual data into 'Kontakt' site
 					Render.createContact(contact);
 					resolve();
