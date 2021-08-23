@@ -13,7 +13,7 @@ $responseData = Array();
  */
 function getCvData(){
 	$stmtCv = DB::get()->prepare(
-		"SELECT id FROM cv ORDER BY category, orderNumber ASC"
+		"SELECT id FROM cv ORDER BY category, orderNumber DESC"
 	);
 	$stmtCv->execute();
 
