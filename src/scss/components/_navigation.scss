@@ -59,10 +59,10 @@ nav{
     ul{
       display: flex;
       justify-content: flex-end;
-      margin: 4.5*$basicHeight 0 0 0;
+      margin: 2vw 0 0 0;
 
       li{
-        padding: $basicHeight 0.5vw; //1.5*$basicWidth;
+        padding: $basicHeight calc(-8px + 2%);
 
         a{
           padding: 0.5*$basicHeight $basicWidth;
@@ -74,11 +74,11 @@ nav{
       }
 
       li:first-of-type{
-        padding: $basicHeight 0.5vw $basicHeight $basicWidth;
+        padding: $basicHeight calc(-8px + 2%) $basicHeight $basicWidth;
       }
 
       li:last-of-type{
-        padding: $basicHeight 2.5vw $basicHeight 0.5vw;
+        padding: $basicHeight calc(-14px + 6%) $basicHeight calc(-8px + 2%);
       }
     }
   }
