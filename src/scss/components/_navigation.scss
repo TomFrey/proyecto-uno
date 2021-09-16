@@ -62,7 +62,7 @@ nav{
       margin: 4.5*$basicHeight 0 0 0;
 
       li{
-        padding: $basicHeight 2.5*$basicWidth;
+        padding: $basicHeight 0.5vw; //1.5*$basicWidth;
 
         a{
           padding: 0.5*$basicHeight $basicWidth;
@@ -74,11 +74,33 @@ nav{
       }
 
       li:first-of-type{
+        padding: $basicHeight 0.5vw $basicHeight $basicWidth;
+      }
+
+      li:last-of-type{
+        padding: $basicHeight 2.5vw $basicHeight 0.5vw;
+      }
+    }
+  }
+}
+
+
+/* *************************************************** */
+/* *********** ab hier für desktop ******************* */
+@media screen and (min-width: $maxWidth) {    // wenn Bildschirm die maximale Breite erreicht hat
+
+  nav{  
+    ul{
+      li{
+        padding: $basicHeight 2.5*$basicWidth;
+      }
+
+      li:first-of-type{
         padding: $basicHeight 2.5*$basicWidth;
       }
 
       li:last-of-type{
-        padding: $basicHeight 25px $basicHeight 2.5*$basicWidth;
+        padding: $basicHeight 47px $basicHeight 2.5*$basicWidth;
       }
     }
   }
