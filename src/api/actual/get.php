@@ -38,6 +38,10 @@ foreach(getActualData() as $actual){
     $row['headlineText'] = $actual->getHeadlineText();
     $row['vernissageTitle'] = $actual->getVernissageTitle();
     $row['vernissageText'] = $actual->getVernissageText();
+    $row['vernissageTitle1'] = $actual->getVernissageTitle1();
+    $row['vernissageText1'] = $actual->getVernissageText1();
+    $row['vernissageTitle2'] = $actual->getVernissageTitle2();
+    $row['vernissageText2'] = $actual->getVernissageText2();
     $row['address'] = $actual->getAddress();
     $row['openingHours'] = $actual->getOpeningHours();
 

@@ -9,6 +9,10 @@ class Actual
 	private $headlineText;
 	private $vernissageTitle;
     private $vernissageText;
+	private $vernissageTitle1;
+    private $vernissageText1;
+	private $vernissageTitle2;
+    private $vernissageText2;
     private $address;
     private $openingHours;
 
@@ -34,6 +38,10 @@ class Actual
 			$this->setHeadlineText($actualData['headline_text']);
 			$this->setVernissageTitle($actualData['vernissage_title']);
             $this->setVernissageText($actualData['vernissage_text']);
+			$this->setVernissageTitle1($actualData['vernissage_title_1']);
+            $this->setVernissageText1($actualData['vernissage_text_1']);
+			$this->setVernissageTitle2($actualData['vernissage_title_2']);
+            $this->setVernissageText2($actualData['vernissage_text_2']);
             $this->setAddress($actualData['address']);
             $this->setOpeningHours($actualData['openingHours']);
 		}
@@ -96,6 +104,46 @@ class Actual
 	public function setVernissageText($vernissageText)
 	{
 		$this->vernissageText = $vernissageText;
+	}
+
+
+	public function getVernissageTitle1()
+	{
+		return $this->vernissageTitle1;
+	}
+	public function setVernissageTitle1($vernissageTitle1)
+	{
+		$this->vernissageTitle1 = $vernissageTitle1;
+	}
+
+
+    public function getVernissageText1()
+	{
+		return $this->vernissageText1;
+	}
+	public function setVernissageText1($vernissageText1)
+	{
+		$this->vernissageText1 = $vernissageText1;
+	}
+
+
+	public function getVernissageTitle2()
+	{
+		return $this->vernissageTitle2;
+	}
+	public function setVernissageTitle2($vernissageTitle2)
+	{
+		$this->vernissageTitle2 = $vernissageTitle2;
+	}
+
+
+    public function getVernissageText2()
+	{
+		return $this->vernissageText2;
+	}
+	public function setVernissageText2($vernissageText2)
+	{
+		$this->vernissageText2 = $vernissageText2;
 	}
 
 
