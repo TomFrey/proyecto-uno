@@ -118,6 +118,38 @@ const Render = (function (Globals) {
         }
         actualDataWrapper.appendChild(pageItemVernissage);
 
+        const pageItemVernissage1 = document.createElement('div');
+        pageItemVernissage1.classList.add('page-item');
+        if (actualData[0].vernissageTitle1) {
+            const vernissageTitle1 = document.createElement('p');
+            vernissageTitle1.classList.add('page-title');
+            vernissageTitle1.innerHTML = actualData[0].vernissageTitle1;
+            pageItemVernissage1.appendChild(vernissageTitle1);
+        }
+        if (actualData[0].vernissageText1) {
+            const vernissageText1 = document.createElement('p');
+            vernissageText1.classList.add('page-text');
+            vernissageText1.innerHTML = actualData[0].vernissageText1;
+            pageItemVernissage1.appendChild(vernissageText1);
+        }
+        actualDataWrapper.appendChild(pageItemVernissage1);
+
+        const pageItemVernissage2 = document.createElement('div');
+        pageItemVernissage2.classList.add('page-item');
+        if (actualData[0].vernissageTitle2) {
+            const vernissageTitle2 = document.createElement('p');
+            vernissageTitle2.classList.add('page-title');
+            vernissageTitle2.innerHTML = actualData[0].vernissageTitle2;
+            pageItemVernissage2.appendChild(vernissageTitle2);
+        }
+        if (actualData[0].vernissageText2) {
+            const vernissageText2 = document.createElement('p');
+            vernissageText2.classList.add('page-text');
+            vernissageText2.innerHTML = actualData[0].vernissageText2;
+            pageItemVernissage2.appendChild(vernissageText2);
+        }
+        actualDataWrapper.appendChild(pageItemVernissage2);
+
         if (actualData[0].address) {
             const pageItemAddress = document.createElement('div');
             pageItemAddress.classList.add('page-item');
